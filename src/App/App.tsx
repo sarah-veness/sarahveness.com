@@ -6,9 +6,7 @@ function App() {
   return (
     <>
       <Nav />
-      <div className={styles.App}>
-        <CardContainer />
-      </div>
+      <CardContainer />
     </>
   );
 }

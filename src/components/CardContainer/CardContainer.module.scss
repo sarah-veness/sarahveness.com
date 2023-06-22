@@ -1,3 +1,12 @@
 .CardContainer {
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 0.25em;
+  margin: 0.25em;
+}
+
+@media (max-width: 600px) {
+  .CardContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
