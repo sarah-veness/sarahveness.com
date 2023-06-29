@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
 import styles from './Nav.module.scss'
 
@@ -6,10 +7,10 @@ export default function Nav() {
   return (
     <div className={styles.Nav}>
       <div className={styles.Links}>
-        <a href='/about'>SARAH</a>
-        <a href='/read'>READING</a>
-        <a href='/uses'>USES</a>
-        <a href='/contact'>CONTACT</a>
+        <Link to='/writing'>WRITING</Link>
+        <Link to='/reading'>READING</Link>
+        <Link to='/uses'>USES</Link>
+        <Link to='/contact'>CONTACT</Link>
       </div>
     </div>
   );
