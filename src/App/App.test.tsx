@@ -1,9 +1,12 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
 import App from './App';
+import { Nav } from '../components';
+import { Route } from "react-router-dom";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+describe('App', () => {
+  it('contains a Nav component', () => {
+    expect(App).toContain(Nav)
+  });
+  it('contains four main routes', () => {
+    expect(App).toContain(Route)
+  })
+})
