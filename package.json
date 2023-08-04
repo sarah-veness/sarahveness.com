@@ -21,7 +21,9 @@
   "scripts": {
     "start": "vite",
     "build": "tsc && vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "test": "vitest watch",
+    "test:coverage": "vitest run --coverage"
   },
   "browserslist": {
     "production": [

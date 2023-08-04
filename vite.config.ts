@@ -1,3 +1,5 @@
+/// <reference types="vitest" />
+
 import { defineConfig, Plugin } from 'vite';
 import eslint from 'vite-plugin-eslint';
 import { resolve } from 'path';
@@ -27,6 +29,18 @@ export default defineConfig({
   ],
   build: {
     outDir: 'build',
+  },
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './src/setupTests.ts',
+    coverage: {
+      reporter: ['text', 'html'],
+      exclude: [
+        'node_modules/',
+        'src/setupTests.js',
+      ],
+    },
   },
   server: {
     port: 3000,
