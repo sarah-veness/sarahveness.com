@@ -8,20 +8,17 @@ import reportWebVitals from './reportWebVitals';
 import App from './App';
 import './index.css';
 
-console.log(import.meta.env.VITE_AUTH0_CLIENT_ID)
-
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <Auth0Provider
-    domain="dashboard-pro-eu-au.auth0.com"
+    domain="dashboard-pro.eu.auth0.com"
     clientId={import.meta.env.VITE_AUTH0_CLIENT_ID}
     authorizationParams={{
-      redirect_uri: import.meta.env.VITE_AUTH_REDIRECT_URI,
+      redirect_uri: import.meta.env.VITE_AUTH_REDIRECT_URL,
     }}
   >
-
     <React.StrictMode>
       <BrowserRouter>
         <App />
