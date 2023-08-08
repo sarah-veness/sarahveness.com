@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 
 import styles from './Nav.module.scss'
+import { AdminNav } from '../';
 
 export default function Nav() {
   return (
@@ -12,6 +13,8 @@ export default function Nav() {
         <Link to='/uses'>USES</Link>
         <Link to='/contact'>CONTACT</Link>
       </div>
+
+      <AdminNav />
     </div>
   );
 }
