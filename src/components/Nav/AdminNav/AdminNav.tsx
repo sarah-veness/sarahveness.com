@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom';
 
-import './admin-nav.module.scss';
+import styles from './admin-nav.module.scss';
 
 export default function AdminNav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,7 +11,7 @@ export default function AdminNav() {
   }
 
   return (
-    <div className="dropdown">
+    <div className={styles.dropdown}>
       <button onClick={toggleDropdown}>Hi Sarah</button>
       {
         isOpen ? (
