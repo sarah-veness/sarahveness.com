@@ -1,5 +1,6 @@
 {
   "name": "sarahveness.com",
+  "type": "module",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -11,7 +12,14 @@
     "@types/node": "^16.18.36",
     "@types/react": "^18.2.13",
     "@types/react-dom": "^18.2.6",
+    "axios": "^1.4.0",
+    "body-parser": "^1.20.2",
+    "config": "^3.3.9",
+    "cors": "^2.8.5",
     "dom": "^0.0.3",
+    "express": "^4.18.2",
+    "mongodb": "^5.7.0",
+    "mongoose": "^7.4.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.14.0",
@@ -21,6 +29,7 @@
   },
   "scripts": {
     "start": "vite",
+    "server": "node server.js",
     "build": "tsc && vite build",
     "serve": "vite preview",
     "test": "vitest watch",
