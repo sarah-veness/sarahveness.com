@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import { Nav, CardContainer, AuthButtons, Dashboard } from '../components';
+import { Nav, CardContainer, AuthButtons, Dashboard, NewPost } from '../components';
 
 import { ProtectedRoute } from '../routes'
 
@@ -19,19 +19,11 @@ function App() {
 
         <Route
           path='/admin'
-          element={
-            <ProtectedRoute>
-              <Dashboard />
-            </ProtectedRoute>
-          }
+          element={<ProtectedRoute component={Dashboard} />}
         />
         <Route
-          path='/new-post'
-          element={
-            <ProtectedRoute>
-              <h1>new post</h1>
-            </ProtectedRoute>
-          }
+          path='/admin/new-post'
+          element={<ProtectedRoute component={NewPost} />}
         />
       </Routes>
     </>

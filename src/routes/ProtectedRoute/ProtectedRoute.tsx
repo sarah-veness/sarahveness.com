@@ -1,11 +1,9 @@
-import { useAuth0 } from "@auth0/auth0-react";
-import { Navigate, useLocation } from "react-router-dom";
+import { withAuthenticationRequired } from "@auth0/auth0-react";
 
 
-export default function ProtectedRoute({ children }: { children: JSX.Element }) {
-  const { isAuthenticated } = useAuth0();
-  let location = useLocation();
+const ProtectedRoute = ({ component, ...args }: any) => {
+  const Component = withAuthenticationRequired(component, args);
+  return <Component />;
+};
 
-  return isAuthenticated ? children : <Navigate to='/' state={{ from: location }} replace />
-
-}
+export default ProtectedRoute;
