@@ -5,6 +5,7 @@ import AuthButtons from './AuthButtons/AuthButtons';
 import Dashboard from './Dashboard/Dashboard';
 import NewPost from './NewPost/NewPost';
 import Contact from './Contact/Contact';
+import Uses from './Uses/Uses';
 
 export {
   Nav,
@@ -13,5 +14,6 @@ export {
   AuthButtons,
   Dashboard,
   NewPost,
-  Contact
+  Contact,
+  Uses
 };

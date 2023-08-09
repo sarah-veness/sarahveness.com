@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import { Nav, CardContainer, AuthButtons, Dashboard, NewPost, Contact } from '../components';
+import { Nav, CardContainer, AuthButtons, Dashboard, NewPost, Contact, Uses } from '../components';
 
 import { ProtectedRoute } from '../routes'
 
@@ -12,7 +12,7 @@ function App() {
         <Route path="/" element={<CardContainer />} />
         <Route path="/writing" element={<CardContainer />} />
         <Route path="/reading" element={<CardContainer />} />
-        <Route path="/uses" element={<CardContainer />} />
+        <Route path="/uses" element={<Uses />} />
         <Route path="/contact" element={<Contact />} />
 
         <Route path="/auth" element={<AuthButtons />} />
