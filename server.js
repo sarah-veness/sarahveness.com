@@ -1,4 +1,5 @@
 import express from 'express';
+import ViteExpress from 'vite-express';
 import connectDB from './config/db.js'
 import cors from 'cors';
 
@@ -15,4 +16,4 @@ app.get('/message', (_, res) => res.send('hello world'))
 
 app.use('/api/posts', router)
 
-app.listen(app, 3000, () => console.log('server listening on port 3000'))
+ViteExpress.listen(app, 3000, () => console.log('server listening on port 3000'))
