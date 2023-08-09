@@ -4,6 +4,7 @@ import CardContainer from './CardContainer/CardContainer';
 import AuthButtons from './AuthButtons/AuthButtons';
 import Dashboard from './Dashboard/Dashboard';
 import NewPost from './NewPost/NewPost';
+import Contact from './Contact/Contact';
 
 export {
   Nav,
@@ -11,5 +12,6 @@ export {
   CardContainer,
   AuthButtons,
   Dashboard,
-  NewPost
+  NewPost,
+  Contact
 };
