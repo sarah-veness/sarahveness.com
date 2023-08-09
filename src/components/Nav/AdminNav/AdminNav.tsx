@@ -31,7 +31,7 @@ export default function AdminNav() {
               </Link>
             </li>
             <li className={styles.menuItem}>
-              <Link to='/new-post'>
+              <Link to='/admin/new-post'>
                 <FontAwesomeIcon icon={faPlus} size="xs" />
                 <span>Add Post</span>
               </Link>
