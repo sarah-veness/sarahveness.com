@@ -4,7 +4,7 @@ export default function AuthButtons() {
   const { loginWithRedirect } = useAuth0();
   const { logout } = useAuth0();
 
-  const { user, isAuthenticated, isLoading } = useAuth0();
+  const { isAuthenticated, isLoading } = useAuth0();
 
   if (isLoading) {
     return <div>Loading ...</div>;
