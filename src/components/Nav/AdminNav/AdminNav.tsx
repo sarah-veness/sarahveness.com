@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUserSecret, faPenToSquare, faPlus, faDoorOpen } from '@fortawesome/free-solid-svg-icons'
+import { faUserSecret, faPlus, faDoorOpen, faGaugeHigh } from '@fortawesome/free-solid-svg-icons'
 
 import styles from './admin-nav.module.scss';
 
@@ -26,18 +26,18 @@ export default function AdminNav() {
           <ul className={styles.menu}>
             <li className={styles.menuItem}>
               <Link to='/admin'>
+                <FontAwesomeIcon icon={faGaugeHigh} size="xs" />
+                <span>Dashboard</span>
+              </Link>
+            </li>
+            <li className={styles.menuItem}>
+              <Link to='/new-post'>
                 <FontAwesomeIcon icon={faPlus} size="xs" />
                 <span>Add Post</span>
               </Link>
             </li>
             <li className={styles.menuItem}>
-              <Link to='/admin/new'>
-                <FontAwesomeIcon icon={faPenToSquare} size="xs" />
-                <span>Edit Post</span>
-              </Link>
-            </li>
-            <li className={styles.menuItem}>
-              <Link to='/admin/new'>
+              <Link to='/logout'>
                 <FontAwesomeIcon icon={faDoorOpen} size="xs" />
                 <span>Log Out</span>
               </Link>
