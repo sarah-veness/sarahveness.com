@@ -12,8 +12,6 @@ connectDB()
 app.use(cors({ origin: true, credentials: true }));
 app.use(express.json({ extended: false }));
 
-app.get('/message', (_, res) => res.send('hello world'))
-
 app.use('/api/posts', router)
 
 ViteExpress.listen(app, 3000, () => console.log('server listening on port 3000'))
