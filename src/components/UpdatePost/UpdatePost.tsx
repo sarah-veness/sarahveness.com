@@ -60,94 +60,94 @@ function UpdatePostInfo(props: any) {
   };
 
   return (
-    <div className='UpdatepostInfo'>
-      <div className='container'>
-        <div className='row'>
-          <div className='col-md-8 m-auto'>
+    <div className="UpdatepostInfo">
+      <div className="container">
+        <div className="row">
+          <div className="col-md-8 m-auto">
             <br />
-            <Link to='/' className='btn btn-outline-warning float-left'>
-              Show post List
+            <Link to="/admin" className="btn btn-outline-warning float-left">
+              BACK TO POSTS
             </Link>
           </div>
-          <div className='col-md-8 m-auto'>
-            <h1 className='display-4 text-center'>Edit post</h1>
-            <p className='lead text-center'>Update post's Info</p>
+          <div className="col-md-8 m-auto">
+            <h1 className="display-4 text-center">Edit post</h1>
+            <p className="lead text-center">Update post's Info</p>
           </div>
         </div>
 
-        <div className='col-md-8 m-auto'>
+        <div className="col-md-8 m-auto">
           <form noValidate onSubmit={onSubmit}>
-            <div className='form-group'>
-              <label htmlFor='title'>Title</label>
+            <div className="form-group">
+              <label htmlFor="title">Title</label>
               <input
-                type='text'
-                placeholder='Title of the post'
-                name='title'
-                className='form-control'
+                type="text"
+                placeholder="Title of the post"
+                name="title"
+                className="form-control"
                 value={post.title}
                 onChange={onChange}
               />
             </div>
             <br />
 
-            <div className='form-group'>
-              <label htmlFor='isbn'>ISBN</label>
+            <div className="form-group">
+              <label htmlFor="isbn">ISBN</label>
               <input
-                type='text'
-                placeholder='ISBN'
-                name='isbn'
-                className='form-control'
+                type="text"
+                placeholder="ISBN"
+                name="isbn"
+                className="form-control"
                 value={post.isbn}
                 onChange={onChange}
               />
             </div>
             <br />
 
-            <div className='form-group'>
-              <label htmlFor='author'>Author</label>
+            <div className="form-group">
+              <label htmlFor="author">Author</label>
               <input
-                type='text'
-                placeholder='Author'
-                name='author'
-                className='form-control'
+                type="text"
+                placeholder="Author"
+                name="author"
+                className="form-control"
                 value={post.author}
                 onChange={onChange}
               />
             </div>
             <br />
 
-            <div className='form-group'>
-              <label htmlFor='description'>Description</label>
+            <div className="form-group">
+              <label htmlFor="description">Description</label>
               <textarea
-                placeholder='Description of the post'
-                name='description'
-                className='form-control'
+                placeholder="Description of the post"
+                name="description"
+                className="form-control"
                 value={post.description}
                 onChange={onChange}
               />
             </div>
             <br />
 
-            <div className='form-group'>
-              <label htmlFor='published_date'>Published Date</label>
+            <div className="form-group">
+              <label htmlFor="published_date">Published Date</label>
               <input
-                type='text'
-                placeholder='Published Date'
-                name='published_date'
-                className='form-control'
+                type="text"
+                placeholder="Published Date"
+                name="published_date"
+                className="form-control"
                 value={post.published_date}
                 onChange={onChange}
               />
             </div>
             <br />
 
-            <div className='form-group'>
-              <label htmlFor='publisher'>Publisher</label>
+            <div className="form-group">
+              <label htmlFor="publisher">Publisher</label>
               <input
-                type='text'
-                placeholder='Publisher of the post'
-                name='publisher'
-                className='form-control'
+                type="text"
+                placeholder="Publisher of the post"
+                name="publisher"
+                className="form-control"
                 value={post.publisher}
                 onChange={onChange}
               />
@@ -155,8 +155,8 @@ function UpdatePostInfo(props: any) {
             <br />
 
             <button
-              type='submit'
-              className='btn btn-outline-info btn-lg btn-block'
+              type="submit"
+              className="btn btn-outline-info btn-lg btn-block"
             >
               Update post
             </button>
