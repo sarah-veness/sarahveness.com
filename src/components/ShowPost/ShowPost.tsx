@@ -6,7 +6,8 @@ export default function ShowPost(props: any) {
   const [post, setPost] = useState({})
 
   const navigate = useNavigate();
-  const id = useParams();
+  const { id } = useParams();
+
 
   useEffect(() => {
     axios
@@ -86,7 +87,7 @@ export default function ShowPost(props: any) {
               type='button'
               className='btn btn-outline-danger btn-lg btn-block'
               onClick={() => {
-                onDeleteClick(post.id);
+                onDeleteClick(id);
               }}
             >
               Delete post
@@ -94,7 +95,7 @@ export default function ShowPost(props: any) {
           </div>
           <div className='col-md-6 m-auto'>
             <Link
-              to={`/edit-post/${post.id}`}
+              to={`/admin/edit-post/${id}`}
               className='btn btn-outline-info btn-lg btn-block'
             >
               Edit post
