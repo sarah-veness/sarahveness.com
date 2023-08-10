@@ -17,7 +17,7 @@ function UpdatePostInfo(props: any) {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8082/api/posts/${id}`)
+      .get(`http://localhost:3000/api/posts/${id}`)
       .then((res) => {
         setpost({
           title: res.data.title,
@@ -50,9 +50,9 @@ function UpdatePostInfo(props: any) {
     };
 
     axios
-      .put(`http://localhost:8082/api/posts/${id}`, data)
+      .put(`http://localhost:3000/api/posts/${id}`, data)
       .then((res) => {
-        navigate(`/show-post/${id}`);
+        navigate(`/writing/${id}`);
       })
       .catch((err) => {
         console.log('Error in UpdatepostInfo!');
