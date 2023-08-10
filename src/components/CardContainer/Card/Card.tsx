@@ -6,7 +6,7 @@ export default function Card(props: any) {
   const post = props.post;
   return (
     <div className={styles.Card}>
-      <Link to={`/writing/${post._id}`}>
+      <Link to={`/post/${post._id}`}>
         <img src='https://placekitten.com/g/500/500' alt='this is where alt text will go' />
         <div className={styles.Overlay}>
           <div className={styles.textContainer}>

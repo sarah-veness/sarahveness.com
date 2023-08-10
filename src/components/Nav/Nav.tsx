@@ -10,7 +10,7 @@ export default function Nav() {
     <>
       <div className={styles.Nav}>
         <div className={styles.Links}>
-          <Link to='/writing'>WRITING</Link>
+          <Link to='/'>WRITING</Link>
           <Link to='/reading'>READING</Link>
           <Link to='/uses'>USES</Link>
           <Link to='/contact'>CONTACT</Link>
