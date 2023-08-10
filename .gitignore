@@ -1,5 +1,6 @@
 node_modules/
 .env
 config/*
+.prettierrc
 
 INTERNAL_README.md
