@@ -7,6 +7,7 @@ import Uses from './Uses/Uses';
 import CreatePost from './CreatePost/CreatePost';
 import UpdatePost from './UpdatePost/UpdatePost';
 import ShowPost from './ShowPost/ShowPost';
+import Reading from './Reading/Reading';
 
 export {
   Nav,
@@ -17,5 +18,6 @@ export {
   Uses,
   CreatePost,
   UpdatePost,
-  ShowPost
+  ShowPost,
+  Reading
 };
