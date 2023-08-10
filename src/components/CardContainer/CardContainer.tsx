@@ -1,24 +1,12 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 import Card from './Card/Card'
-
 import styles from './card-container.module.scss';
 
-export default function CardContainer() {
-  const [posts, setPosts] = useState([]);
+import usePosts from '../../hooks/usePosts'
 
-  useEffect(() => {
-    axios
-      .get('http://localhost:3000/api/posts')
-      .then(res => {
-        setPosts(res.data);
-      })
-      .catch(err => {
-        console.error(`Error in CardContainer: ${err.message}`)
-      });
-  }, []);
+export default function CardContainer() {
+  const posts = usePosts()
 
   const postList =
     posts.length === 0

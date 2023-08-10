@@ -2,13 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-type Post = {
-  title: string,
-  author: string,
-  content: string
-  publisher: string,
-  published_date: string,
-}
+import { Post } from '../../types/Post';
 
 export default function ShowPost() {
   const [post, setPost] = useState({} as Post)
