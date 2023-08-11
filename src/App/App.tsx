@@ -1,14 +1,15 @@
 import { Routes, Route } from 'react-router-dom';
 import {
-  Writing,
   AuthButtons,
-  Dashboard,
-  NewPost,
   Contact,
-  Uses,
+  Dashboard,
   EditPost,
-  ShowPost,
+  Home,
+  NewPost,
   Reading,
+  ShowPost,
+  Uses,
+  Writing,
 } from '../components';
 import { AdminLayout, PublicLayout } from '../layout';
 
@@ -19,7 +20,8 @@ function App() {
     <>
       <Routes>
         <Route element={<PublicLayout />}>
-          <Route path="/" element={<Writing />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/writing" element={<Writing />} />
           <Route path="/reading" element={<Reading />} />
           <Route path="/uses" element={<Uses />} />
           <Route path="/contact" element={<Contact />} />

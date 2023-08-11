@@ -8,6 +8,7 @@ import NewPost from './NewPost/NewPost';
 import EditPost from './EditPost/EditPost';
 import ShowPost from './ShowPost/ShowPost';
 import Reading from './Reading/Reading';
+import Home from './Home/Home';
 
 export {
   Nav,
@@ -20,4 +21,5 @@ export {
   EditPost,
   ShowPost,
   Reading,
+  Home,
 };
