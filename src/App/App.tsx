@@ -3,10 +3,10 @@ import {
   Writing,
   AuthButtons,
   Dashboard,
-  CreatePost,
+  NewPost,
   Contact,
   Uses,
-  UpdatePost,
+  EditPost,
   ShowPost,
   Reading,
 } from '../components';
@@ -36,11 +36,11 @@ function App() {
           />
           <Route
             path="/admin/new-post"
-            element={<ProtectedRoute component={CreatePost} />}
+            element={<ProtectedRoute component={NewPost} />}
           />
           <Route
             path="/admin/edit-post/:id"
-            element={<ProtectedRoute component={UpdatePost} />}
+            element={<ProtectedRoute component={EditPost} />}
           />
         </Route>
       </Routes>

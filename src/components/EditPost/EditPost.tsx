@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import slugify from '../../utilities/create-post-slug';
 
-function UpdatePostInfo() {
+function EditPost() {
   const [post, setPost] = useState({
     title: '',
     slug: '',
@@ -29,7 +29,7 @@ function UpdatePostInfo() {
         });
       })
       .catch((err) => {
-        console.log(`Error from UpdatepostInfo, ${err}`);
+        console.log(`Error from EditPost, ${err}`);
       });
   }, [id]);
 
@@ -54,12 +54,12 @@ function UpdatePostInfo() {
         navigate(`/post/${id}`);
       })
       .catch((err) => {
-        console.log('Error in UpdatepostInfo!', err);
+        console.log('Error in EditPost!', err);
       });
   };
 
   return (
-    <div className="UpdatepostInfo">
+    <div className="EditPost">
       <div className="container">
         <div className="row">
           <div className="col-md-8 m-auto">
@@ -140,4 +140,4 @@ function UpdatePostInfo() {
   );
 }
 
-export default UpdatePostInfo;
+export default EditPost;

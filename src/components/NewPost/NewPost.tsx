@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import slugify from '../../utilities/create-post-slug';
 
-const CreatePost = () => {
+const NewPost = () => {
   const navigate = useNavigate();
   const [post, setPost] = useState({
     title: '',
@@ -33,12 +33,12 @@ const CreatePost = () => {
         navigate('/');
       })
       .catch((err) => {
-        console.error(`Error in createPost: ${err.message}`);
+        console.error(`Error in NewPost: ${err.message}`);
       });
   };
 
   return (
-    <div className="Createpost">
+    <div className="NewPost">
       <div className="container">
         <div className="row">
           <div className="col-md-8 m-auto">
@@ -118,4 +118,4 @@ const CreatePost = () => {
   );
 };
 
-export default CreatePost;
+export default NewPost;

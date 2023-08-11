@@ -4,8 +4,8 @@ import AuthButtons from './AuthButtons/AuthButtons';
 import Dashboard from './Dashboard/Dashboard';
 import Contact from './Contact/Contact';
 import Uses from './Uses/Uses';
-import CreatePost from './CreatePost/CreatePost';
-import UpdatePost from './UpdatePost/UpdatePost';
+import NewPost from './NewPost/NewPost';
+import EditPost from './EditPost/EditPost';
 import ShowPost from './ShowPost/ShowPost';
 import Reading from './Reading/Reading';
 
@@ -16,8 +16,8 @@ export {
   Dashboard,
   Contact,
   Uses,
-  CreatePost,
-  UpdatePost,
+  NewPost,
+  EditPost,
   ShowPost,
   Reading,
 };
