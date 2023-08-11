@@ -1,4 +1,6 @@
 .Dashboard {
+  width: 50%;
+  margin: 0 auto;
   h1 {
     text-align: center;
   }
@@ -7,7 +9,44 @@
     li {
       list-style-type: none;
       border: 1px solid black;
-      margin: 1em 0;
+      margin: 2em 0;
+    }
+    .deleteButton {
+      cursor: pointer;
+    }
+  }
+  .Post {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 0.5em;
+
+    .title {
+      margin-left: 0.5em;
+      text-decoration: none;
+      color: black;
+
+      &:hover {
+        font-weight: bold;
+      }
+    }
+
+    .buttonGroup {
+      .editButton {
+        margin: 0 1em;
+        color: black;
+
+        &:hover {
+          color: pink;
+        }
+      }
+      .deleteButton {
+        margin: 0 0.5em;
+
+        &:hover {
+          color: pink;
+        }
+      }
     }
   }
 }
