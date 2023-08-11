@@ -40,6 +40,16 @@ export default function ShowPost() {
             <td>{post.published_date}</td>
           </tr>
           <tr>
+            <th scope="row">5</th>
+            <td>Updated Date</td>
+            <td>{post.updated_date}</td>
+          </tr>
+          <tr>
+            <th scope="row">5</th>
+            <td>tags</td>
+            <td>{post.tags}</td>
+          </tr>
+          <tr>
             <th scope="row">6</th>
             <td>Description</td>
             <td>{post.content}</td>
@@ -54,7 +64,6 @@ export default function ShowPost() {
       <div className="container">
         <div className="row">
           <div className="col-md-10 m-auto">
-            <br /> <br />
             <Link to="/" className="btn btn-outline-warning float-left">
               Back to Posts
             </Link>
