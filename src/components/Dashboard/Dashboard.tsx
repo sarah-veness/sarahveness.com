@@ -59,7 +59,7 @@ export default function Dashboard() {
 
   return (
     <div className={styles.Dashboard}>
-      <h1>Dashboard</h1>
+      <h1>Manage Posts</h1>
       <ul>{postList}</ul>
     </div>
   );
