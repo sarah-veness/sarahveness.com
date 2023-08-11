@@ -1,15 +1,18 @@
-import { useState } from 'react'
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+
+import slugify from '../../utilities/create-post-slug';
 
 const CreatePost = (props: any) => {
   const navigate = useNavigate();
   const [post, setPost] = useState({
     title: '',
+    slug: '',
     content: '',
     author: '',
     published_date: '',
-  })
+  });
 
   const onChange = (e: any) => {
     setPost({ ...post, [e.target.name]: e.target.value });
@@ -22,81 +25,90 @@ const CreatePost = (props: any) => {
       .then((res) => {
         setPost({
           title: '',
+          slug: '',
           content: '',
           author: '',
           published_date: '',
         });
-        navigate('/')
+        navigate('/');
       })
-      .catch(err => {
-        console.error(`Error in createPost: ${err.message}`)
-      })
-  }
-
+      .catch((err) => {
+        console.error(`Error in createPost: ${err.message}`);
+      });
+  };
 
   return (
-    <div className='Createpost'>
-      <div className='container'>
-        <div className='row'>
-          <div className='col-md-8 m-auto'>
+    <div className="Createpost">
+      <div className="container">
+        <div className="row">
+          <div className="col-md-8 m-auto">
             <br />
-            <Link to='/' className='btn btn-outline-warning float-left'>
+            <Link to="/" className="btn btn-outline-warning float-left">
               Show post List
             </Link>
           </div>
-          <div className='col-md-8 m-auto'>
-            <h1 className='display-4 text-center'>Add post</h1>
-            <p className='lead text-center'>Create new post</p>
+          <div className="col-md-8 m-auto">
+            <h1 className="display-4 text-center">Add post</h1>
+            <p className="lead text-center">Create new post</p>
 
             <form noValidate onSubmit={onSubmit}>
-              <div className='form-group'>
+              <div className="form-group">
                 <input
-                  type='text'
-                  placeholder='Title of the post'
-                  name='title'
-                  className='form-control'
+                  type="text"
+                  placeholder="Title of the post"
+                  name="title"
+                  className="form-control"
                   value={post.title}
                   onChange={onChange}
                 />
               </div>
-              <br />
-
-              <div className='form-group'>
+              <div className="form-group">
                 <input
-                  type='text'
-                  placeholder='Author'
-                  name='author'
-                  className='form-control'
+                  type="text"
+                  placeholder="Slug for the post"
+                  name="slug"
+                  className="form-control"
+                  readOnly
+                  value={slugify(post.title)}
+                  onChange={onChange}
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  type="text"
+                  placeholder="Author"
+                  name="author"
+                  className="form-control"
                   value={post.author}
                   onChange={onChange}
                 />
               </div>
 
-              <div className='form-group'>
+              <div className="form-group">
                 <input
-                  type='text'
-                  placeholder='Describe this post'
-                  name='content'
-                  className='form-control'
+                  type="text"
+                  placeholder="Describe this post"
+                  name="content"
+                  className="form-control"
                   value={post.content}
                   onChange={onChange}
                 />
               </div>
 
-              <div className='form-group'>
+              <div className="form-group">
                 <input
-                  type='date'
-                  placeholder='published_date'
-                  name='published_date'
-                  className='form-control'
+                  type="date"
+                  placeholder="published_date"
+                  name="published_date"
+                  className="form-control"
                   value={post.published_date}
                   onChange={onChange}
                 />
               </div>
 
               <input
-                type='submit'
-                className='btn btn-outline-warning btn-block mt-4'
+                type="submit"
+                className="btn btn-outline-warning btn-block mt-4"
               />
             </form>
           </div>
@@ -105,6 +117,5 @@ const CreatePost = (props: any) => {
     </div>
   );
 };
-
 
 export default CreatePost;

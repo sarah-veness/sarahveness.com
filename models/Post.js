@@ -5,6 +5,10 @@ const PostSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  slug: {
+    type: String,
+    required: true,
+  },
   content: {
     type: String,
     required: true,
@@ -20,8 +24,8 @@ const PostSchema = new mongoose.Schema({
   updated_date: {
     type: String,
     required: false,
-  }
-})
+  },
+});
 
 const Post = mongoose.model('post', PostSchema);
 
