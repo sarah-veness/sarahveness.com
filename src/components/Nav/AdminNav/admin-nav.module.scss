@@ -2,7 +2,6 @@
 
 .dropdown {
   font-family: 'VT323', monospace;
-  position: absolute;
   right: 1.25em;
   top: 0.8em;
 
@@ -32,8 +31,7 @@
     min-width: 100px;
     width: 100%;
     list-style-type: none;
-    padding: 10px;
-    right: -16px;
+    padding: 0 5px;
 
     .menuItem {
       margin-top: 10px;
@@ -47,7 +45,6 @@
           font-weight: bold;
         }
       }
-
     }
   }
 }

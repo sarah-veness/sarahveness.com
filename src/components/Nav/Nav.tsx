@@ -1,7 +1,7 @@
 import { useAuth0 } from '@auth0/auth0-react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
-import styles from './Nav.module.scss'
+import styles from './nav.module.scss';
 import AdminNav from './AdminNav/AdminNav';
 
 export default function Nav() {
@@ -9,14 +9,17 @@ export default function Nav() {
   return (
     <>
       <div className={styles.Nav}>
-        <div className={styles.Links}>
-          <Link to='/'>WRITING</Link>
-          <Link to='/reading'>READING</Link>
-          <Link to='/uses'>USES</Link>
-          <Link to='/contact'>CONTACT</Link>
+        <div>
+          <Link to="/">SV</Link>
         </div>
+        <div className={styles.mainLinks}>
+          <Link to="/writing">WRITING</Link>
+          <Link to="/reading">READING</Link>
+          <Link to="/uses">USES</Link>
+          <Link to="/contact">CONTACT</Link>
+        </div>
+        {isAuthenticated ? <AdminNav /> : <div></div>}
       </div>
-      {isAuthenticated ? <AdminNav /> : null}
     </>
   );
 }
