@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import type { Post } from '../types/Post'
+import type { Post } from '../types/Post';
 
 const usePosts = () => {
   const [posts, setPosts] = useState([] as Post[]);
@@ -9,10 +9,10 @@ const usePosts = () => {
   useEffect(() => {
     axios
       .get('http://localhost:3000/api/posts')
-      .then(res => {
+      .then((res) => {
         setPosts(res.data);
       })
-      .catch(err => {
+      .catch((err) => {
         console.error(`Error fetching posts: ${err.message}`);
       });
   }, []);

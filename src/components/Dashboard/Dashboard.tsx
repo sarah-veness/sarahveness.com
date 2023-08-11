@@ -16,7 +16,8 @@ export default function Dashboard() {
     axios
       .delete(`http://localhost:3000/api/posts/${id}`)
       .then((res) => {
-        console.log('deteled!');
+        console.log('deleted');
+        window.location.reload();
       })
       .catch((err) => {
         console.error(`Error in ShowPostDeleteClick: ${err.message}`);
