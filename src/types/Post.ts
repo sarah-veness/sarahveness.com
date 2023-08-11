@@ -1,4 +1,4 @@
-export type Post = {
+type Post = {
   readonly _id?: string;
   title: string;
   slug: string;
@@ -8,3 +8,9 @@ export type Post = {
   published_date: string;
   updated_date?: string;
 };
+
+interface PostProps {
+  post: Post;
+}
+
+export type { Post, PostProps };
