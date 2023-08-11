@@ -3,7 +3,6 @@ import Writing from './Writing/Writing';
 import AuthButtons from './AuthButtons/AuthButtons';
 import Dashboard from './Dashboard/Dashboard';
 import Contact from './Contact/Contact';
-import Uses from './Uses/Uses';
 import NewPost from './NewPost/NewPost';
 import EditPost from './EditPost/EditPost';
 import ShowPost from './ShowPost/ShowPost';
@@ -16,7 +15,6 @@ export {
   AuthButtons,
   Dashboard,
   Contact,
-  Uses,
   NewPost,
   EditPost,
   ShowPost,

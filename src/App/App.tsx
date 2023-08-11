@@ -8,7 +8,6 @@ import {
   NewPost,
   Reading,
   ShowPost,
-  Uses,
   Writing,
 } from '../components';
 import { AdminLayout, PublicLayout } from '../layout';
@@ -23,7 +22,6 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/writing" element={<Writing />} />
           <Route path="/reading" element={<Reading />} />
-          <Route path="/uses" element={<Uses />} />
           <Route path="/contact" element={<Contact />} />
 
           <Route path="/post/:id" element={<ShowPost />} />
