@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
 
-import useFormattedDate from '../../../hooks/useFormattedDate';
+import formatDate from '../../../utilities/format-date';
 
 import styles from './Card.module.scss';
 
 export default function Card(props: any) {
   const post = props.post;
-  const formattedDate = useFormattedDate(props.post.published_date);
+  const formattedDate = formatDate(props.post.published_date);
   return (
     <div className={styles.Card}>
       <Link to={`/post/${post._id}`}>

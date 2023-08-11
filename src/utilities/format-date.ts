@@ -1,4 +1,4 @@
-const useFormattedDate = (inputDateStr: string): string => {
+const formatDate = (inputDateStr: string): string => {
   const inputDate = new Date(inputDateStr);
 
   const options: Intl.DateTimeFormatOptions = {
@@ -13,4 +13,4 @@ const useFormattedDate = (inputDateStr: string): string => {
   return formattedDate;
 };
 
-export default useFormattedDate;
+export default formatDate;
