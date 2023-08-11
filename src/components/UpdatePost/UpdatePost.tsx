@@ -2,14 +2,15 @@ import { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-function UpdatePostInfo(props: any) {
-  const [post, setpost] = useState({
+import slugify from '../../utilities/create-post-slug';
+
+function UpdatePostInfo() {
+  const [post, setPost] = useState({
     title: '',
-    isbn: '',
+    slug: '',
+    content: '',
     author: '',
-    description: '',
-    published_date: '',
-    publisher: '',
+    updated_date: '',
   });
 
   const { id } = useParams();
@@ -19,22 +20,21 @@ function UpdatePostInfo(props: any) {
     axios
       .get(`http://localhost:3000/api/posts/${id}`)
       .then((res) => {
-        setpost({
+        setPost({
           title: res.data.title,
-          isbn: res.data.isbn,
+          slug: res.data.slug,
+          content: res.data.content,
           author: res.data.author,
-          description: res.data.description,
-          published_date: res.data.published_date,
-          publisher: res.data.publisher,
+          updated_date: '',
         });
       })
       .catch((err) => {
-        console.log('Error from UpdatepostInfo');
+        console.log(`Error from UpdatepostInfo, ${err}`);
       });
   }, [id]);
 
   const onChange = (e: any) => {
-    setpost({ ...post, [e.target.name]: e.target.value });
+    setPost({ ...post, [e.target.name]: e.target.value });
   };
 
   const onSubmit = (e: any) => {
@@ -42,20 +42,19 @@ function UpdatePostInfo(props: any) {
 
     const data = {
       title: post.title,
-      isbn: post.isbn,
+      slug: slugify(post.title),
+      content: post.content,
       author: post.author,
-      description: post.description,
-      published_date: post.published_date,
-      publisher: post.publisher,
+      updated_date: post.updated_date,
     };
 
     axios
       .put(`http://localhost:3000/api/posts/${id}`, data)
-      .then((res) => {
-        navigate(`/writing/${id}`);
+      .then(() => {
+        navigate(`/post/${id}`);
       })
       .catch((err) => {
-        console.log('Error in UpdatepostInfo!');
+        console.log('Error in UpdatepostInfo!', err);
       });
   };
 
@@ -91,19 +90,6 @@ function UpdatePostInfo(props: any) {
             <br />
 
             <div className="form-group">
-              <label htmlFor="isbn">ISBN</label>
-              <input
-                type="text"
-                placeholder="ISBN"
-                name="isbn"
-                className="form-control"
-                value={post.isbn}
-                onChange={onChange}
-              />
-            </div>
-            <br />
-
-            <div className="form-group">
               <label htmlFor="author">Author</label>
               <input
                 type="text"
@@ -117,38 +103,25 @@ function UpdatePostInfo(props: any) {
             <br />
 
             <div className="form-group">
-              <label htmlFor="description">Description</label>
+              <label htmlFor="description">Content</label>
               <textarea
                 placeholder="Description of the post"
-                name="description"
+                name="content"
                 className="form-control"
-                value={post.description}
+                value={post.content}
                 onChange={onChange}
               />
             </div>
             <br />
 
             <div className="form-group">
-              <label htmlFor="published_date">Published Date</label>
+              <label htmlFor="updated_date">Updated Date</label>
               <input
                 type="text"
                 placeholder="Published Date"
-                name="published_date"
+                name="updated_date"
                 className="form-control"
-                value={post.published_date}
-                onChange={onChange}
-              />
-            </div>
-            <br />
-
-            <div className="form-group">
-              <label htmlFor="publisher">Publisher</label>
-              <input
-                type="text"
-                placeholder="Publisher of the post"
-                name="publisher"
-                className="form-control"
-                value={post.publisher}
+                value={post.updated_date}
                 onChange={onChange}
               />
             </div>
