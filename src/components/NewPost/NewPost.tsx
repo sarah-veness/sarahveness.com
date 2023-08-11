@@ -3,13 +3,17 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 import slugify from '../../utilities/create-post-slug';
+import availableTags from '../../utilities/tags';
+
+import type { Post } from '../../types/Post';
 
 const NewPost = () => {
   const navigate = useNavigate();
-  const [post, setPost] = useState({
+  const [post, setPost] = useState<Post>({
     title: '',
     slug: '',
     content: '',
+    tags: [],
     author: '',
     published_date: '',
   });
@@ -18,8 +22,14 @@ const NewPost = () => {
     setPost({ ...post, [e.target.name]: e.target.value });
   };
 
+  const onTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let slug = slugify(e.target.value);
+    setPost({ ...post, title: e.target.value, slug: slug });
+  };
+
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    console.log(post);
     axios
       .post('http://localhost:3000/api/posts', post)
       .then(() => {
@@ -27,14 +37,24 @@ const NewPost = () => {
           title: '',
           slug: '',
           content: '',
+          tags: [],
           author: '',
           published_date: '',
         });
         navigate('/');
       })
       .catch((err) => {
-        console.error(`Error in NewPost: ${err.message}`);
+        console.error(`Error in NewPost: ${err}`);
       });
+  };
+
+  const handleTagChange = (tagName: string) => {
+    setPost((prevPost) => ({
+      ...prevPost,
+      tags: prevPost.tags.includes(tagName)
+        ? prevPost.tags.filter((name) => name !== tagName)
+        : [...prevPost.tags, tagName],
+    }));
   };
 
   return (
@@ -59,7 +79,7 @@ const NewPost = () => {
                   name="title"
                   className="form-control"
                   value={post.title}
-                  onChange={onChange}
+                  onChange={onTitleChange}
                 />
               </div>
               <div className="form-group">
@@ -70,7 +90,6 @@ const NewPost = () => {
                   className="form-control"
                   readOnly
                   value={slugify(post.title)}
-                  onChange={onChange}
                 />
               </div>
               <div className="form-group">
@@ -83,7 +102,6 @@ const NewPost = () => {
                   onChange={onChange}
                 />
               </div>
-
               <div className="form-group">
                 <input
                   type="text"
@@ -94,7 +112,18 @@ const NewPost = () => {
                   onChange={onChange}
                 />
               </div>
-
+              <div className="form-group">
+                {availableTags.map((tag, i) => (
+                  <label key={i}>
+                    <input
+                      type="checkbox"
+                      checked={post.tags.includes(tag.name)}
+                      onChange={() => handleTagChange(tag.name)}
+                    />
+                    {tag.name}
+                  </label>
+                ))}
+              </div>
               <div className="form-group">
                 <input
                   type="date"
@@ -106,10 +135,7 @@ const NewPost = () => {
                 />
               </div>
 
-              <input
-                type="submit"
-                className="btn btn-outline-warning btn-block mt-4"
-              />
+              <input type="submit" />
             </form>
           </div>
         </div>
