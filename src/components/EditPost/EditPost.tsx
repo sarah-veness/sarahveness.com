@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import slugify from '../../utilities/create-post-slug';
 
-function EditPost() {
+export default function EditPost() {
   const [post, setPost] = useState({
     title: '',
     slug: '',
@@ -139,5 +139,3 @@ function EditPost() {
     </div>
   );
 }
-
-export default EditPost;

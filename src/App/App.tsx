@@ -15,7 +15,7 @@ import { AdminLayout, PublicLayout } from '../layout';
 
 import { ProtectedRoute } from '../routes';
 
-function App() {
+export default function App() {
   return (
     <>
       <Routes>
@@ -49,5 +49,3 @@ function App() {
     </>
   );
 }
-
-export default App;
