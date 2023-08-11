@@ -15,7 +15,7 @@ export default function Dashboard() {
   const onDeleteClick = (id: any) => {
     axios
       .delete(`http://localhost:3000/api/posts/${id}`)
-      .then((res) => {
+      .then(() => {
         console.log('deleted');
         window.location.reload();
       })

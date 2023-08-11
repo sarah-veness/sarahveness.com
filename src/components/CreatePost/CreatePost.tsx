@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import slugify from '../../utilities/create-post-slug';
 
-const CreatePost = (props: any) => {
+const CreatePost = () => {
   const navigate = useNavigate();
   const [post, setPost] = useState({
     title: '',
@@ -14,15 +14,15 @@ const CreatePost = (props: any) => {
     published_date: '',
   });
 
-  const onChange = (e: any) => {
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPost({ ...post, [e.target.name]: e.target.value });
   };
 
-  const onSubmit = (e: any) => {
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     axios
       .post('http://localhost:3000/api/posts', post)
-      .then((res) => {
+      .then(() => {
         setPost({
           title: '',
           slug: '',

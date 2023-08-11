@@ -35,11 +35,6 @@ export default function ShowPost() {
             <td>{post.author}</td>
           </tr>
           <tr>
-            <th scope="row">4</th>
-            <td>Publisher</td>
-            <td>{post.publisher}</td>
-          </tr>
-          <tr>
             <th scope="row">5</th>
             <td>Published Date</td>
             <td>{post.published_date}</td>
