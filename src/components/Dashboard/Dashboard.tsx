@@ -3,7 +3,7 @@ import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faPen } from '@fortawesome/free-solid-svg-icons';
 
-import type { Post } from '../../types/Post';
+import type { PostProps } from '../../types/Post';
 
 import usePosts from '../../hooks/usePosts';
 
@@ -24,7 +24,7 @@ export default function Dashboard() {
       });
   };
 
-  function PostItem({ post }: { post: Post }) {
+  function PostItem({ post }: PostProps) {
     return (
       <li className={styles.Post}>
         <Link to={`/admin/edit-post/${post._id}`} className={styles.title}>

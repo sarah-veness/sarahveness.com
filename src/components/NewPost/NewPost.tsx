@@ -5,11 +5,11 @@ import axios from 'axios';
 import slugify from '../../utilities/create-post-slug';
 import availableTags from '../../utilities/tags';
 
-import type { Post } from '../../types/Post';
+import type { PostType } from '../../types/Post';
 
 const NewPost = () => {
   const navigate = useNavigate();
-  const [post, setPost] = useState<Post>({
+  const [post, setPost] = useState<PostType>({
     title: '',
     slug: '',
     content: '',
