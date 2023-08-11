@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import {
-  CardContainer,
+  Writing,
   AuthButtons,
   Dashboard,
   CreatePost,
@@ -8,18 +8,18 @@ import {
   Uses,
   UpdatePost,
   ShowPost,
-  Reading
+  Reading,
 } from '../components';
 import { AdminLayout, PublicLayout } from '../layout';
 
-import { ProtectedRoute } from '../routes'
+import { ProtectedRoute } from '../routes';
 
 function App() {
   return (
     <>
       <Routes>
         <Route element={<PublicLayout />}>
-          <Route path="/" element={<CardContainer />} />
+          <Route path="/" element={<Writing />} />
           <Route path="/reading" element={<Reading />} />
           <Route path="/uses" element={<Uses />} />
           <Route path="/contact" element={<Contact />} />
@@ -31,21 +31,21 @@ function App() {
 
         <Route element={<AdminLayout />}>
           <Route
-            path='/admin'
+            path="/admin"
             element={<ProtectedRoute component={Dashboard} />}
           />
           <Route
-            path='/admin/new-post'
+            path="/admin/new-post"
             element={<ProtectedRoute component={CreatePost} />}
           />
           <Route
-            path='/admin/edit-post/:id'
+            path="/admin/edit-post/:id"
             element={<ProtectedRoute component={UpdatePost} />}
           />
         </Route>
       </Routes>
     </>
-  )
+  );
 }
 
 export default App;
