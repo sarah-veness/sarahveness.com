@@ -1,9 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
+.fixedNav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background: white;
+}
 .Nav {
   display: flex;
   justify-content: space-between;
-  margin: 2em 3em;
+  margin: 1em 2.5%;
+  width: 95%;
 
   .mainLinks {
     display: flex;
