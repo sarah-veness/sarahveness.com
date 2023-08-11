@@ -7,10 +7,10 @@ import styles from './post.module.scss';
 const Post = ({ post }: PostProps) => {
   const publishedDate = formatDate(post.published_date);
   return (
-    <div className={styles.blogContainer}>
+    <div className={styles.postContainer}>
       <p className={styles.tags}>{post.tags}</p>
       <h1 className={styles.title}>{post.title}</h1>
-      <span className={styles.date}>{publishedDate}</span>
+      <p className={styles.date}>{publishedDate}</p>
       <div className={styles.content}>{post.content}</div>
     </div>
   );
