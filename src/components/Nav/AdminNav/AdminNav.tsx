@@ -41,6 +41,12 @@ export default function AdminNav() {
             </Link>
           </li>
           <li className={styles.menuItem}>
+            <Link to="/">
+              <FontAwesomeIcon icon={faPlus} size="xs" />
+              <span>Public Side</span>
+            </Link>
+          </li>
+          <li className={styles.menuItem}>
             <Link to="/auth">
               <FontAwesomeIcon icon={faDoorOpen} size="xs" />
               <span>Log Out</span>

@@ -1,5 +1,23 @@
-.Container {
-  width: 80%;
-  margin: 100px auto;
-  padding: 10px 50px;
+.AdminLayout {
+  > div:first-of-type {
+    display: flex;
+    flex-direction: column;
+    margin: 1em 2em;
+    position: absolute;
+
+    button {
+      text-align: left;
+    }
+  }
+
+  ul {
+    margin-top: 1.3em;
+    min-width: 112px;
+  }
+
+  .Container {
+    width: 80%;
+    margin: 100px auto;
+    padding: 10px 50px;
+  }
 }
