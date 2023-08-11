@@ -24,7 +24,7 @@ export default function App() {
           <Route path="/reading" element={<Reading />} />
           <Route path="/contact" element={<Contact />} />
 
-          <Route path="/post/:id" element={<ShowPost />} />
+          <Route path="/writing/:id" element={<ShowPost />} />
         </Route>
 
         <Route path="/auth" element={<AuthButtons />} />
