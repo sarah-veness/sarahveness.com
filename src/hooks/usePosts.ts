@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import type { Post } from '../types/Post';
+import type { PostType } from '../types/Post';
 
 const usePosts = () => {
-  const [posts, setPosts] = useState([] as Post[]);
+  const [posts, setPosts] = useState([] as PostType[]);
 
   useEffect(() => {
     axios

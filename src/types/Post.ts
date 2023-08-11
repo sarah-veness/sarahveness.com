@@ -1,4 +1,4 @@
-type Post = {
+type PostType = {
   readonly _id?: string;
   title: string;
   slug: string;
@@ -10,7 +10,7 @@ type Post = {
 };
 
 interface PostProps {
-  post: Post;
+  post: PostType;
 }
 
-export type { Post, PostProps };
+export type { PostType, PostProps };
