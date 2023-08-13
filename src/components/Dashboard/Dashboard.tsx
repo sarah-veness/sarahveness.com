@@ -5,12 +5,12 @@ import { faTrash, faPen } from '@fortawesome/free-solid-svg-icons';
 
 import type { PostProps } from '../../types/Post';
 
-import usePosts from '../../hooks/usePosts';
+import useGetPosts from '../../hooks/useGetPosts';
 
 import styles from './dashboard.module.scss';
 
 export default function Dashboard() {
-  let posts = usePosts();
+  const { posts } = useGetPosts();
 
   const onDeleteClick = (id: any) => {
     axios

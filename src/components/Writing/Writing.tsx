@@ -1,10 +1,10 @@
 import Card from './Card/Card';
 import styles from './card-container.module.scss';
 
-import usePosts from '../../hooks/usePosts';
+import useGetPosts from '../../hooks/useGetPosts';
 
 export default function Writing() {
-  const posts = usePosts();
+  const { posts } = useGetPosts();
 
   const postList =
     posts.length === 0

@@ -3,21 +3,28 @@ import axios from 'axios';
 
 import type { PostType } from '../types/Post';
 
-const usePosts = () => {
-  const [posts, setPosts] = useState([] as PostType[]);
+const useGetPosts = () => {
+  const [loading, setLoading] = useState<boolean>(true);
+  const [posts, setPosts] = useState<PostType[]>([]);
 
-  useEffect(() => {
+  const fetchPosts = () => {
     axios
       .get('http://localhost:3000/api/posts')
       .then((res) => {
         setPosts(res.data);
+        setLoading(false);
       })
       .catch((err) => {
         console.error(`Error fetching posts: ${err.message}`);
+        setLoading(false);
       });
+  };
+
+  useEffect(() => {
+    fetchPosts();
   }, []);
 
-  return posts;
+  return { loading, posts };
 };
 
-export default usePosts;
+export default useGetPosts;
