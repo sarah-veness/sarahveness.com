@@ -5,7 +5,6 @@ import axios from 'axios';
 import type { PostType } from '../../types/Post';
 
 import slugify from '../../utilities/create-post-slug';
-import formatDate from '../../utilities/format-date';
 import availableTags from '../../utilities/tags';
 
 export default function EditPost() {
@@ -22,8 +21,7 @@ export default function EditPost() {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const date = new Date().toLocaleDateString();
-  const todaysDate = formatDate(date);
+  const todaysDate = new Date().toLocaleDateString();
 
   const handleTagChange = (tagName: string) => {
     setPost((prevPost) => ({
@@ -33,8 +31,6 @@ export default function EditPost() {
         : [...prevPost.tags, tagName],
     }));
   };
-
-  console.log(post);
 
   useEffect(() => {
     axios
@@ -53,7 +49,7 @@ export default function EditPost() {
       .catch((err) => {
         console.log(`Error from EditPost, ${err}`);
       });
-  }, [id]);
+  }, [id, todaysDate]);
 
   const onChange = (e: any) => {
     setPost({ ...post, [e.target.name]: e.target.value });
