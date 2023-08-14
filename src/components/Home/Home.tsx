@@ -1,3 +1,10 @@
+import styles from './home.module.scss';
+
 export default function Home() {
-  return <h1>Home!</h1>;
+  return (
+    <div className={styles.homePageContainer}>
+      <span className={styles.backgroundName}>SARAH</span>
+      <span className={styles.backgroundName}>VENESS</span>
+    </div>
+  );
 }
