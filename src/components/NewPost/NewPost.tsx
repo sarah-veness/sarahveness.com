@@ -6,6 +6,7 @@ import slugify from '../../utilities/create-post-slug';
 import availableTags from '../../utilities/tags';
 
 import type { PostType } from '../../types/Post';
+import ContentEditor from '../ContentEditor/ContentEditor';
 
 const NewPost = () => {
   const navigate = useNavigate();
@@ -27,9 +28,12 @@ const NewPost = () => {
     setPost({ ...post, title: e.target.value, slug: slug });
   };
 
+  const onContentChange = (value: string) => {
+    setPost({ ...post, content: value });
+  };
+
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(post);
     axios
       .post('http://localhost:3000/api/posts', post)
       .then(() => {
@@ -103,13 +107,9 @@ const NewPost = () => {
                 />
               </div>
               <div className="form-group">
-                <input
-                  type="text"
-                  placeholder="Describe this post"
-                  name="content"
-                  className="form-control"
-                  value={post.content}
-                  onChange={onChange}
+                <ContentEditor
+                  initialValue={post.content}
+                  handleOnChange={onContentChange}
                 />
               </div>
               <div className="form-group">

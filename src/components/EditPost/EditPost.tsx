@@ -2,10 +2,11 @@ import { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+import ContentEditor from '../ContentEditor/ContentEditor';
+
 import type { PostType } from '../../types/Post';
 
-import slugify from '../../utilities/create-post-slug';
-import availableTags from '../../utilities/tags';
+import { slugify, availableTags } from '../../utilities';
 
 export default function EditPost() {
   const [post, setPost] = useState<PostType>({
@@ -55,6 +56,10 @@ export default function EditPost() {
     setPost({ ...post, [e.target.name]: e.target.value });
   };
 
+  const onContentChange = (value: string) => {
+    setPost({ ...post, content: value });
+  };
+
   const onSubmit = (e: any) => {
     e.preventDefault();
 
@@ -66,8 +71,6 @@ export default function EditPost() {
       author: post.author,
       updated_date: todaysDate,
     };
-
-    console.log(data);
 
     axios
       .put(`http://localhost:3000/api/posts/${id}`, data)
@@ -124,13 +127,9 @@ export default function EditPost() {
             <br />
 
             <div className="form-group">
-              <label htmlFor="description">Content</label>
-              <textarea
-                placeholder="Description of the post"
-                name="content"
-                className="form-control"
-                value={post.content}
-                onChange={onChange}
+              <ContentEditor
+                initialValue={post.content}
+                handleOnChange={onContentChange}
               />
             </div>
             <br />
