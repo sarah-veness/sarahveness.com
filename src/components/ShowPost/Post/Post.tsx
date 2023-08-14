@@ -1,11 +1,10 @@
 import type { PostProps } from '../../../types/Post';
 
-import formatDate from '../../../utilities/format-date';
+import { formatDate } from '../../../utilities';
 
 import styles from './post.module.scss';
 
 const Post = ({ post }: PostProps) => {
-  console.log(post);
   const publishedDate = formatDate(post.published_date);
   return (
     <div className={styles.postContainer}>
