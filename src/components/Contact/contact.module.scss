@@ -43,8 +43,8 @@
   top: calc(50% - 25px);
   left: calc(50% - 25px);
   border-radius: 50%;
-  background-color: #9acfc5;
-  border: 5px solid #43beae;
+  background-color: white;
+  border: 5px solid rgb(225, 42, 141);
   box-sizing: border-box;
 }
 .coffee-header__details {
@@ -56,7 +56,7 @@
   background-color: #9b9091;
   box-shadow: -12px 0 0 #9b9091, -24px 0 0 #9b9091;
 }
-.coffee-medium {
+.coffee-machine {
   width: 90%;
   height: 160px;
   position: absolute;
@@ -64,7 +64,7 @@
   left: calc(50% - 45%);
   background-color: #bcb0af;
 }
-.coffee-medium:before {
+.coffee-machine:before {
   content: '';
   width: 90%;
   height: 100px;
@@ -74,7 +74,7 @@
   left: calc(50% - 45%);
   border-radius: 20px 20px 0 0;
 }
-.coffe-medium__exit {
+.spout {
   width: 60px;
   height: 20px;
   position: absolute;
@@ -82,7 +82,7 @@
   left: calc(50% - 30px);
   background-color: #231f20;
 }
-.coffe-medium__exit::before {
+.spout::before {
   content: '';
   width: 50px;
   height: 20px;
@@ -92,7 +92,7 @@
   left: calc(50% - 25px);
   background-color: #231f20;
 }
-.coffe-medium__exit::after {
+.spout::after {
   content: '';
   width: 10px;
   height: 10px;
@@ -101,7 +101,7 @@
   left: calc(50% - 5px);
   background-color: #231f20;
 }
-.coffee-medium__arm {
+.coffee-machine__arm {
   width: 70px;
   height: 20px;
   position: absolute;
@@ -109,7 +109,7 @@
   right: 25px;
   background-color: #231f20;
 }
-.coffee-medium__arm::before {
+.coffee-machine__arm::before {
   content: '';
   width: 15px;
   height: 5px;
@@ -159,7 +159,7 @@
     opacity: 0;
   }
 }
-.coffee-medium__liquid {
+.liquid {
   width: 6px;
   height: 63px;
   opacity: 0;
@@ -169,7 +169,7 @@
   background-color: #74372b;
   animation: liquid 4s 4s linear infinite;
 }
-.coffee-medium__smoke {
+.steam {
   width: 8px;
   height: 20px;
   position: absolute;
@@ -212,25 +212,25 @@
     opacity: 0;
   }
 }
-.coffee-medium__smoke-one {
+.steam-one {
   opacity: 0;
   bottom: 50px;
   left: 102px;
   animation: smokeOne 3s 4s linear infinite;
 }
-.coffee-medium__smoke-two {
+.steam-two {
   opacity: 0;
   bottom: 70px;
   left: 118px;
   animation: smokeTwo 3s 5s linear infinite;
 }
-.coffee-medium__smoke-three {
+.steam-three {
   opacity: 0;
   bottom: 65px;
   right: 118px;
   animation: smokeTwo 3s 6s linear infinite;
 }
-.coffee-medium__smoke-for {
+.steam-four {
   opacity: 0;
   bottom: 50px;
   right: 102px;
@@ -242,7 +242,7 @@
   position: absolute;
   bottom: 25px;
   left: calc(50% - 47.5%);
-  background-color: #41bdad;
+  background-color: rgb(225, 42, 141);
   border-radius: 10px;
 }
 .coffee-footer::after {

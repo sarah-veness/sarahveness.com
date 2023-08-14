@@ -22,12 +22,16 @@
       );
     background-clip: text;
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; /* specifies the fill color of text characters. We use transparent to use the background as our text fill  */
+    -webkit-text-fill-color: transparent;
     animation: wave 2000ms ease alternate infinite;
     transition: all 0.4s ease;
 
     @media (max-width: 600px) {
       font-size: 3em;
+    }
+
+    @media (max-width: 900px) {
+      font-size: 8em;
     }
   }
   @keyframes wave {
