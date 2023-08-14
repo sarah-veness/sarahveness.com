@@ -2,19 +2,39 @@ import { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+import type { PostType } from '../../types/Post';
+
 import slugify from '../../utilities/create-post-slug';
+import formatDate from '../../utilities/format-date';
+import availableTags from '../../utilities/tags';
 
 export default function EditPost() {
-  const [post, setPost] = useState({
+  const [post, setPost] = useState<PostType>({
     title: '',
     slug: '',
     content: '',
+    tags: [],
     author: '',
     updated_date: '',
+    published_date: '',
   });
 
   const { id } = useParams();
   const navigate = useNavigate();
+
+  const date = new Date().toLocaleDateString();
+  const todaysDate = formatDate(date);
+
+  const handleTagChange = (tagName: string) => {
+    setPost((prevPost) => ({
+      ...prevPost,
+      tags: prevPost.tags.includes(tagName)
+        ? prevPost.tags.filter((name) => name !== tagName)
+        : [...prevPost.tags, tagName],
+    }));
+  };
+
+  console.log(post);
 
   useEffect(() => {
     axios
@@ -24,8 +44,10 @@ export default function EditPost() {
           title: res.data.title,
           slug: res.data.slug,
           content: res.data.content,
+          tags: res.data.tags,
           author: res.data.author,
           updated_date: '',
+          published_date: todaysDate,
         });
       })
       .catch((err) => {
@@ -43,15 +65,18 @@ export default function EditPost() {
     const data = {
       title: post.title,
       slug: slugify(post.title),
+      tags: post.tags,
       content: post.content,
       author: post.author,
-      updated_date: post.updated_date,
+      updated_date: todaysDate,
     };
+
+    console.log(data);
 
     axios
       .put(`http://localhost:3000/api/posts/${id}`, data)
       .then(() => {
-        navigate(`/post/${id}`);
+        navigate(`/writing/${id}`);
       })
       .catch((err) => {
         console.log('Error in EditPost!', err);
@@ -113,18 +138,19 @@ export default function EditPost() {
               />
             </div>
             <br />
-
             <div className="form-group">
-              <label htmlFor="updated_date">Updated Date</label>
-              <input
-                type="text"
-                placeholder="Published Date"
-                name="updated_date"
-                className="form-control"
-                value={post.updated_date}
-                onChange={onChange}
-              />
+              {availableTags.map((tag, i) => (
+                <label key={i}>
+                  <input
+                    type="checkbox"
+                    checked={post.tags.includes(tag.name)}
+                    onChange={() => handleTagChange(tag.name)}
+                  />
+                  {tag.name}
+                </label>
+              ))}
             </div>
+
             <br />
 
             <button

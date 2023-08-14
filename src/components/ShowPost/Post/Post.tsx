@@ -5,6 +5,7 @@ import formatDate from '../../../utilities/format-date';
 import styles from './post.module.scss';
 
 const Post = ({ post }: PostProps) => {
+  console.log(post);
   const publishedDate = formatDate(post.published_date);
   return (
     <div className={styles.postContainer}>
