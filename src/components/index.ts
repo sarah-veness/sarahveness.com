@@ -8,6 +8,7 @@ import EditPost from './EditPost/EditPost';
 import ShowPost from './ShowPost/ShowPost';
 import Reading from './Reading/Reading';
 import Home from './Home/Home';
+import ContentEditor from './ContentEditor/ContentEditor';
 
 export {
   Nav,
@@ -20,4 +21,5 @@ export {
   ShowPost,
   Reading,
   Home,
+  ContentEditor,
 };
