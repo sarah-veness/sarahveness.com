@@ -1,7 +1,13 @@
 .homePageContainer {
   display: flex;
   flex-direction: column;
-  margin-top: 10em;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  span:nth-of-type(1) {
+    align-self: flex-start;
+  }
 
   span:nth-of-type(2) {
     align-self: flex-end;
@@ -28,6 +34,7 @@
 
     @media (max-width: 600px) {
       font-size: 3em;
+      align-self: center !important;
     }
 
     @media (max-width: 900px) {
