@@ -2,5 +2,9 @@
   .Container {
     margin: 0 auto;
     padding: 5em;
+
+    @media screen and (max-width: 600px) {
+      padding: 1em;
+    }
   }
 }
