@@ -43,8 +43,8 @@ export default function EditPost() {
           content: res.data.content,
           tags: res.data.tags,
           author: res.data.author,
-          updated_date: '',
-          published_date: todaysDate,
+          updated_date: todaysDate,
+          published_date: res.data.published_date,
         });
       })
       .catch((err) => {
