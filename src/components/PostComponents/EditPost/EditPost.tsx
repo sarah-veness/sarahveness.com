@@ -4,9 +4,9 @@ import axios from 'axios';
 
 import ContentEditor from '../ContentEditor/ContentEditor';
 
-import type { PostType } from '../../types/Post';
+import type { PostType } from '../../../types/Post';
 
-import { slugify, availableTags } from '../../utilities';
+import { slugify, availableTags } from '../../../utilities';
 
 export default function EditPost() {
   const [post, setPost] = useState<PostType>({

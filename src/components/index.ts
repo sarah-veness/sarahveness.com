@@ -1,14 +1,17 @@
 import Nav from './Nav/Nav';
-import Writing from './Writing/Writing';
 import AuthButtons from './AuthButtons/AuthButtons';
-import Dashboard from './Dashboard/Dashboard';
-import Contact from './Contact/Contact';
-import NewPost from './NewPost/NewPost';
-import EditPost from './EditPost/EditPost';
-import ShowPost from './ShowPost/ShowPost';
-import Reading from './Reading/Reading';
+
 import Home from './Home/Home';
-import ContentEditor from './ContentEditor/ContentEditor';
+import Writing from './Writing/Writing';
+import Reading from './Reading/Reading';
+import Contact from './Contact/Contact';
+
+import Dashboard from './Dashboard/Dashboard';
+
+import NewPost from './PostComponents/NewPost/NewPost';
+import EditPost from './PostComponents/EditPost/EditPost';
+import ShowPost from './PostComponents/ShowPost/ShowPost';
+import ContentEditor from './PostComponents/ContentEditor/ContentEditor';
 
 export {
   Nav,

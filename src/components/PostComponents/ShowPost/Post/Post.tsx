@@ -1,6 +1,6 @@
-import type { PostProps } from '../../../types/Post';
+import type { PostProps } from '../../../../types/Post';
 
-import { formatDate } from '../../../utilities';
+import { formatDate } from '../../../../utilities';
 
 import styles from './post.module.scss';
 

@@ -2,11 +2,13 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-import slugify from '../../utilities/create-post-slug';
-import availableTags from '../../utilities/tags';
+import slugify from '../../../utilities/create-post-slug';
+import availableTags from '../../../utilities/tags';
 
-import type { PostType } from '../../types/Post';
+import type { PostType } from '../../../types/Post';
 import ContentEditor from '../ContentEditor/ContentEditor';
+
+// import styles from './new-post.module.scss';
 
 const NewPost = () => {
   const navigate = useNavigate();
