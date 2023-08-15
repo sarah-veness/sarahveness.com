@@ -1,4 +1,4 @@
-import Card from './Card/Card';
+import Card from '../Card/Card';
 import styles from './card-container.module.scss';
 
 import useGetPosts from '../../hooks/useGetPosts';
