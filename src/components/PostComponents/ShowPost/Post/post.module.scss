@@ -11,7 +11,17 @@
     margin: 0;
   }
 
-  .tags,
+  .tagContainer {
+    display: flex;
+    .tags {
+      text-transform: uppercase;
+      margin-right: 1em;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
   .date {
     text-transform: uppercase;
     font-size: 0.75em;
