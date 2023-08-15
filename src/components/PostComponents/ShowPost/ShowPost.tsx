@@ -28,8 +28,9 @@ export default function ShowPost() {
 
   return (
     <div>
-      <Link to="/writing">Back to Posts</Link>
-      <hr />
+      <span>
+        <Link to="/writing">Back to Posts</Link>
+      </span>
       <Post post={post} />
     </div>
   );
