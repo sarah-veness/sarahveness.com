@@ -11,6 +11,7 @@ import Dashboard from './Dashboard/Dashboard';
 import NewPost from './PostComponents/NewPost/NewPost';
 import EditPost from './PostComponents/EditPost/EditPost';
 import ShowPost from './PostComponents/ShowPost/ShowPost';
+import ShowPostsByTag from './PostComponents/ShowPostsByTag/ShowPostsByTag';
 import ContentEditor from './PostComponents/ContentEditor/ContentEditor';
 
 export {
@@ -22,6 +23,7 @@ export {
   NewPost,
   EditPost,
   ShowPost,
+  ShowPostsByTag,
   Reading,
   Home,
   ContentEditor,
