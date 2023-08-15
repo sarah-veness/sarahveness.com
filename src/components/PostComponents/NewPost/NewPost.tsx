@@ -71,7 +71,7 @@ const NewPost = () => {
 
   return (
     <div className={styles.NewPostContainer}>
-      <h2>Add Post</h2>
+      <h2 className={styles.addPost}>Add Post</h2>
 
       <form noValidate onSubmit={onSubmit}>
         <div className={styles.formGroup}>

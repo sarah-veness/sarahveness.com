@@ -6,11 +6,11 @@
   background-color: white;
   padding: 2em;
 
-  @media (max-width: 800px) {
+  @media (max-width: 900px) {
     width: 90%;
   }
 
-  h2 {
+  .addPost {
     font-family: 'VT323', monospace;
     text-align: center;
   }
@@ -69,6 +69,8 @@
 
   .quill div:nth-child(2) {
     height: 250px;
+    font-family: inherit;
+    font-size: 1em;
   }
 
   .tagGroup {
