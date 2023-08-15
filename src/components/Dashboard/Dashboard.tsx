@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -11,6 +12,7 @@ import styles from './dashboard.module.scss';
 
 export default function Dashboard() {
   const { posts } = useGetPosts();
+  const [postId, setPostId] = useState('');
 
   const onDeleteClick = (id: any) => {
     axios
@@ -22,6 +24,22 @@ export default function Dashboard() {
       .catch((err) => {
         console.error(`Error in ShowPostDeleteClick: ${err.message}`);
       });
+  };
+
+  const toggleModal = () => {
+    const modal = document.querySelector(`.${styles.DeleteModal}`);
+    modal?.classList.toggle(`${styles.active}`);
+    modal?.classList.toggle(`${styles.hidden}`);
+  };
+
+  const DeleteModal = () => {
+    console.log(postId);
+    return (
+      <div className={`${styles.DeleteModal} ${styles.hidden}`}>
+        This is a modal
+        <button onClick={() => onDeleteClick(postId)}>Delete</button>
+      </div>
+    );
   };
 
   function PostItem({ post }: PostProps) {
@@ -43,7 +61,8 @@ export default function Dashboard() {
           <span
             className={styles.deleteButton}
             onClick={() => {
-              onDeleteClick(post._id);
+              toggleModal();
+              setPostId(post._id);
             }}
           >
             <FontAwesomeIcon icon={faTrash} />
@@ -64,6 +83,7 @@ export default function Dashboard() {
     <div className={styles.Dashboard}>
       <h1>Manage Posts</h1>
       <ul>{postList}</ul>
+      <DeleteModal />
     </div>
   );
 }

@@ -1,6 +1,23 @@
 .Dashboard {
   width: 50%;
   margin: 0 auto;
+
+  @media (max-width: 900px) {
+    width: 90%;
+  }
+
+  .DeleteModal {
+    background-color: red;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .active {
+    display: block;
+  }
+
   h1 {
     text-align: center;
   }
@@ -32,16 +49,10 @@
     }
 
     .buttonGroup {
-      .editButton {
-        margin: 0 1em;
+      a,
+      span {
+        margin: 0 0.75em;
         color: black;
-
-        &:hover {
-          color: pink;
-        }
-      }
-      .deleteButton {
-        margin: 0 0.5em;
 
         &:hover {
           color: pink;
