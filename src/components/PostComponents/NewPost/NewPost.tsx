@@ -1,23 +1,29 @@
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
 import axios from 'axios';
 
 import slugify from '../../../utilities/create-post-slug';
 import availableTags from '../../../utilities/tags';
 
 import type { PostType } from '../../../types/Post';
-import ContentEditor from '../ContentEditor/ContentEditor';
 
-// import styles from './new-post.module.scss';
+import styles from './new-post.module.scss';
 
 const NewPost = () => {
+  const { user } = useAuth0();
+  const author = user?.name || 'Anonymous';
+
   const navigate = useNavigate();
   const [post, setPost] = useState<PostType>({
     title: '',
     slug: '',
     content: '',
     tags: [],
-    author: '',
+    author: author,
     published_date: '',
   });
 
@@ -64,84 +70,65 @@ const NewPost = () => {
   };
 
   return (
-    <div className="NewPost">
-      <div className="container">
-        <div className="row">
-          <div className="col-md-8 m-auto">
-            <br />
-            <Link to="/" className="btn btn-outline-warning float-left">
-              Show post List
-            </Link>
-          </div>
-          <div className="col-md-8 m-auto">
-            <h1 className="display-4 text-center">Add post</h1>
-            <p className="lead text-center">Create new post</p>
+    <div className={styles.NewPostContainer}>
+      <h2>Add Post</h2>
 
-            <form noValidate onSubmit={onSubmit}>
-              <div className="form-group">
-                <input
-                  type="text"
-                  placeholder="Title of the post"
-                  name="title"
-                  className="form-control"
-                  value={post.title}
-                  onChange={onTitleChange}
-                />
-              </div>
-              <div className="form-group">
-                <input
-                  type="text"
-                  placeholder="Slug for the post"
-                  name="slug"
-                  className="form-control"
-                  readOnly
-                  value={slugify(post.title)}
-                />
-              </div>
-              <div className="form-group">
-                <input
-                  type="text"
-                  placeholder="Author"
-                  name="author"
-                  className="form-control"
-                  value={post.author}
-                  onChange={onChange}
-                />
-              </div>
-              <div className="form-group">
-                <ContentEditor
-                  initialValue={post.content}
-                  handleOnChange={onContentChange}
-                />
-              </div>
-              <div className="form-group">
-                {availableTags.map((tag, i) => (
-                  <label key={i}>
-                    <input
-                      type="checkbox"
-                      checked={post.tags.includes(tag.name)}
-                      onChange={() => handleTagChange(tag.name)}
-                    />
-                    {tag.name}
-                  </label>
-                ))}
-              </div>
-              <div className="form-group">
-                <input
-                  type="date"
-                  placeholder="published_date"
-                  name="published_date"
-                  className="form-control"
-                  value={post.published_date}
-                  onChange={onChange}
-                />
-              </div>
-
-              <input type="submit" />
-            </form>
-          </div>
+      <form noValidate onSubmit={onSubmit}>
+        <div className={styles.formGroup}>
+          <label htmlFor="title" className={styles.label}>
+            Title
+          </label>
+          <input
+            type="text"
+            name="title"
+            id="title"
+            className={styles.formInput}
+            value={post.title}
+            onChange={onTitleChange}
+          />
+          <div className={styles.slug}>/{slugify(post.title)}</div>
         </div>
-      </div>
+        <div>
+          <span className={styles.label}>Author</span>
+          <span className={styles.author}>{author}</span>
+        </div>
+        <div className={styles.formGroup}>
+          <label className={styles.label}>Write</label>
+          <ReactQuill
+            className={styles.quill}
+            theme="snow"
+            value={post.content}
+            onChange={onContentChange}
+          />
+        </div>
+        <div className={styles.tagGroup}>
+          {availableTags.map((tag, i) => (
+            <label htmlFor={tag.name} key={i}>
+              <input
+                type="checkbox"
+                className={styles.checkbox}
+                checked={post.tags.includes(tag.name)}
+                onChange={() => handleTagChange(tag.name)}
+                id={tag.name}
+              />
+              <span key={i} className={styles.tagLabel}>
+                # {tag.name}
+              </span>
+            </label>
+          ))}
+        </div>
+        <div className={styles.formGroup}>
+          <input
+            type="date"
+            placeholder="published_date"
+            name="published_date"
+            value={post.published_date}
+            onChange={onChange}
+          />
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
     </div>
   );
 };
