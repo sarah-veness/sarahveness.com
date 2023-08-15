@@ -111,9 +111,11 @@ const NewPost = () => {
                 onChange={() => handleTagChange(tag.name)}
                 id={tag.name}
               />
-              <span key={i} className={styles.tagLabel}>
-                # {tag.name}
-              </span>
+              <div>
+                <span key={i} className={styles.tagLabel}>
+                  # {tag.name.toUpperCase()}
+                </span>
+              </div>
             </label>
           ))}
         </div>

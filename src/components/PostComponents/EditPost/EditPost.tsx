@@ -141,7 +141,7 @@ export default function EditPost() {
                     checked={post.tags.includes(tag.name)}
                     onChange={() => handleTagChange(tag.name)}
                   />
-                  {tag.name}
+                  {tag.name.toUpperCase()}
                 </label>
               ))}
             </div>
