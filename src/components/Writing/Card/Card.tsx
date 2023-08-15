@@ -8,7 +8,13 @@ import styles from './Card.module.scss';
 
 export default function Card({ post }: PostProps) {
   const formattedDate = formatDate(post.published_date);
-  const tags = post.tags.map((tag) => tag.toUpperCase());
+  const tags = post.tags.map((tag) => {
+    return (
+      <span key={tag} className={styles.tag}>
+        #{tag.toUpperCase()}
+      </span>
+    );
+  });
   return (
     <div className={styles.Card}>
       <Link to={`/writing/${post._id}`}>
@@ -17,7 +23,7 @@ export default function Card({ post }: PostProps) {
           <div className={styles.textContainer}>
             <h2 className={styles.title}>{post.title}</h2>
             <h3 className={styles.date}>{formattedDate}</h3>
-            <span>{tags}</span>
+            {tags}
           </div>
         </div>
       </Link>

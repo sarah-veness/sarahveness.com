@@ -35,14 +35,17 @@
       }
     }
 
-    p {
-      @media screen and (max-width: 600px) {
-        font-size: 0.75em;
-      }
-    }
-
     .date {
       font-size: 0.75em;
+      margin-bottom: 0.25em;
+    }
+
+    .tag {
+      margin-right: 0.5em;
+      font-size: 0.75em;
+      &:last-of-type {
+        margin-right: 0;
+      }
     }
   }
 }
