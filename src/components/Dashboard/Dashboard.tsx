@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash, faPen } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faPen, faEye } from '@fortawesome/free-solid-svg-icons';
 
 import type { PostProps } from '../../types/Post';
 
@@ -31,6 +31,9 @@ export default function Dashboard() {
           {post.title}
         </Link>
         <div className={styles.buttonGroup}>
+          <Link to={`/writing/${post._id}`} className={styles.viewButton}>
+            <FontAwesomeIcon icon={faEye} />
+          </Link>
           <Link
             to={`/admin/edit-post/${post._id}`}
             className={styles.editButton}
