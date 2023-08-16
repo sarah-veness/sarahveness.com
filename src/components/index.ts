@@ -13,6 +13,7 @@ import EditPost from './PostComponents/EditPost/EditPost';
 import ShowPost from './PostComponents/ShowPost/ShowPost';
 import ShowPostsByTag from './PostComponents/ShowPostsByTag/ShowPostsByTag';
 import ContentEditor from './PostComponents/ContentEditor/ContentEditor';
+import PostForm from './PostComponents/PostForm/PostForm';
 
 export {
   Nav,
@@ -27,4 +28,5 @@ export {
   Reading,
   Home,
   ContentEditor,
+  PostForm,
 };

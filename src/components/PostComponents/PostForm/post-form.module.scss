@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+.PostFormContainer {
+  width: 70%;
+  margin: 0 auto;
+  background-color: white;
+  padding: 2em;
+
+  @media (max-width: 900px) {
+    width: 90%;
+  }
+
+  .addPost {
+    font-family: 'VT323', monospace;
+    text-align: center;
+  }
+
+  .formGroup,
+  .tagGroup {
+    margin: 2em 0;
+  }
+
+  .formInput {
+    width: 300px;
+  }
+
+  button {
+    border: 1px solid rgb(225, 42, 141);
+    background-color: white;
+    font-size: 1em;
+    padding: 5px 15px;
+    border-radius: 5px;
+    text-transform: uppercase;
+
+    &:hover {
+      background-color: rgb(225, 42, 141);
+      color: white;
+      cursor: pointer;
+    }
+  }
+
+  .label {
+    display: block;
+    text-transform: uppercase;
+    font-size: 0.75em;
+    margin-bottom: 0.5em;
+  }
+
+  input {
+    padding: 0.5em;
+    font-family: inherit;
+    font-size: inherit;
+  }
+
+  input[type='checkbox'] {
+    display: none;
+  }
+
+  .slug {
+    display: inline-block;
+    margin-left: 1em;
+
+    @media (max-width: 900px) {
+      display: block;
+      margin-left: 0;
+      margin-top: 0.5em;
+    }
+  }
+
+  .tagGroup {
+    label {
+      text-transform: uppercase;
+      margin-right: 1em;
+      cursor: pointer;
+      display: inline-block;
+    }
+  }
+  :checked + div {
+    border: 1px solid rgb(225, 42, 141);
+    padding: 0.5em;
+    display: inline;
+
+    span {
+      font-weight: bold;
+    }
+  }
+}
