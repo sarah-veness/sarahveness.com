@@ -69,6 +69,35 @@ const NewPost = () => {
     }));
   };
 
+  const moduleOptions = {
+    toolbar: [
+      [{ header: [1, 2, false] }],
+      ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+      [
+        { list: 'ordered' },
+        { list: 'bullet' },
+        { indent: '-1' },
+        { indent: '+1' },
+      ],
+      ['link', 'image'],
+      ['clean'],
+    ],
+  };
+
+  const formats = [
+    'header',
+    'bold',
+    'italic',
+    'underline',
+    'strike',
+    'blockquote',
+    'list',
+    'bullet',
+    'indent',
+    'link',
+    'image',
+  ];
+
   return (
     <div className={styles.NewPostContainer}>
       <h2 className={styles.addPost}>Add Post</h2>
@@ -99,6 +128,8 @@ const NewPost = () => {
             theme="snow"
             value={post.content}
             onChange={onContentChange}
+            modules={moduleOptions}
+            formats={formats}
           />
         </div>
         <div className={styles.tagGroup}>
