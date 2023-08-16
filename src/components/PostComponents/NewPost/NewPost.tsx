@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import PostForm from '../PostForm/PostForm';
 
-import type { PostType } from '../../../types/Post';
+import type { PostType } from 'types/Post';
 
 const NewPost = () => {
   const navigate = useNavigate();

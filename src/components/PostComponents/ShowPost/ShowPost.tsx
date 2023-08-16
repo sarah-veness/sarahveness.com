@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import Post from './Post/Post';
 
-import type { PostType } from '../../../types/Post';
+import type { PostType } from 'types/Post';
 
 export default function ShowPost() {
   const [post, setPost] = useState({} as PostType);

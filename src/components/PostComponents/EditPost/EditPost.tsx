@@ -4,9 +4,9 @@ import axios from 'axios';
 
 import PostForm from '../PostForm/PostForm';
 
-import type { PostType } from '../../../types/Post';
+import slugify from 'utilities/create-post-slug';
 
-import { slugify } from '../../../utilities';
+import type { PostType } from 'types/Post';
 
 export default function EditPost() {
   const [post, setPost] = useState<Partial<PostType>>({

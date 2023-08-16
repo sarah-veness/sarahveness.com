@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 
-import type { PostProps } from '../../../../types/Post';
+import type { PostProps } from 'types/Post';
 
-import { formatDate } from '../../../../utilities';
+import formatDate from 'utilities/format-date';
 
 import styles from './post.module.scss';
 

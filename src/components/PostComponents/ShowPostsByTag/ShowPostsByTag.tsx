@@ -1,11 +1,11 @@
 import { useParams } from 'react-router-dom';
 import Card from '../../Card/Card';
 
-import type { PostType } from '../../../types/Post';
+import useGetPosts from 'hooks/useGetPosts';
 
 import styles from './show-posts-by-tag.module.scss';
 
-import useGetPosts from '../../../hooks/useGetPosts';
+import type { PostType } from 'types/Post';
 
 export default function Writing() {
   const { tag } = useParams();

@@ -1,7 +1,7 @@
 import Card from '../Card/Card';
 import styles from './card-container.module.scss';
 
-import useGetPosts from '../../hooks/useGetPosts';
+import useGetPosts from 'hooks/useGetPosts';
 
 export default function Writing() {
   const { posts } = useGetPosts();

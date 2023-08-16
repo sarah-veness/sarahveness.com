@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faPen, faEye } from '@fortawesome/free-solid-svg-icons';
 
-import type { PostProps } from '../../types/Post';
+import useGetPosts from 'hooks/useGetPosts';
 
-import useGetPosts from '../../hooks/useGetPosts';
+import type { PostProps } from 'types/Post';
 
 import styles from './dashboard.module.scss';
 

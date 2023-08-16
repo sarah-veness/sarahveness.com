@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import type { PostType } from '../types/Post';
+import type { PostType } from 'types/Post';
 
 const useGetPosts = () => {
   const [loading, setLoading] = useState<boolean>(true);

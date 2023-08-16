@@ -1,10 +1,11 @@
 import { useAuth0 } from '@auth0/auth0-react';
-import type { PostType } from '../../../types/Post';
 
 import ContentEditor from '../ContentEditor/ContentEditor';
 
-import slugify from '../../../utilities/create-post-slug';
-import availableTags from '../../../utilities/tags';
+import slugify from 'utilities/create-post-slug';
+import availableTags from 'utilities/tags';
+
+import type { PostType } from 'types/Post';
 
 import styles from './post-form.module.scss';
 
