@@ -94,15 +94,17 @@ export default function PostForm({
             </label>
           ))}
         </div>
-        <div className={styles.formGroup}>
-          <input
-            type="date"
-            placeholder="published_date"
-            name="published_date"
-            value={post.published_date}
-            onChange={onChange}
-          />
-        </div>
+        {heading === 'Add Post' ? (
+          <div className={styles.formGroup}>
+            <input
+              type="date"
+              placeholder="published_date"
+              name="published_date"
+              value={post.published_date}
+              onChange={onChange}
+            />
+          </div>
+        ) : null}
 
         <button type="submit">Submit</button>
       </form>
