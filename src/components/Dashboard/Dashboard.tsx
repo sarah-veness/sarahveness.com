@@ -33,7 +33,6 @@ export default function Dashboard() {
   };
 
   const DeleteModal = () => {
-    console.log(postId);
     return (
       <div className={`${styles.DeleteModal} ${styles.hidden}`}>
         This is a modal

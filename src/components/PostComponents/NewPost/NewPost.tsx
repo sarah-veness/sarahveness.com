@@ -18,7 +18,7 @@ const NewPost = () => {
   const author = user?.name || 'Anonymous';
 
   const navigate = useNavigate();
-  const [post, setPost] = useState<PostType>({
+  const [post, setPost] = useState<Partial<PostType>>({
     title: '',
     slug: '',
     content: '',
@@ -63,9 +63,9 @@ const NewPost = () => {
   const handleTagChange = (tagName: string) => {
     setPost((prevPost) => ({
       ...prevPost,
-      tags: prevPost.tags.includes(tagName)
-        ? prevPost.tags.filter((name) => name !== tagName)
-        : [...prevPost.tags, tagName],
+      tags: prevPost.tags!.includes(tagName)
+        ? prevPost.tags!.filter((name) => name !== tagName)
+        : [...prevPost.tags!, tagName],
     }));
   };
 
@@ -86,7 +86,7 @@ const NewPost = () => {
             value={post.title}
             onChange={onTitleChange}
           />
-          <div className={styles.slug}>/{slugify(post.title)}</div>
+          <div className={styles.slug}>/{slugify(post.title!)}</div>
         </div>
         <div>
           <span className={styles.label}>Author</span>
@@ -107,7 +107,7 @@ const NewPost = () => {
               <input
                 type="checkbox"
                 className={styles.checkbox}
-                checked={post.tags.includes(tag.name)}
+                checked={post.tags!.includes(tag.name)}
                 onChange={() => handleTagChange(tag.name)}
                 id={tag.name}
               />

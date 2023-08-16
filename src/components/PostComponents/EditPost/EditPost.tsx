@@ -9,7 +9,7 @@ import type { PostType } from '../../../types/Post';
 import { slugify, availableTags } from '../../../utilities';
 
 export default function EditPost() {
-  const [post, setPost] = useState<PostType>({
+  const [post, setPost] = useState<Partial<PostType>>({
     title: '',
     slug: '',
     content: '',
@@ -27,9 +27,9 @@ export default function EditPost() {
   const handleTagChange = (tagName: string) => {
     setPost((prevPost) => ({
       ...prevPost,
-      tags: prevPost.tags.includes(tagName)
-        ? prevPost.tags.filter((name) => name !== tagName)
-        : [...prevPost.tags, tagName],
+      tags: prevPost.tags!.includes(tagName)
+        ? prevPost.tags!.filter((name) => name !== tagName)
+        : [...prevPost.tags!, tagName],
     }));
   };
 
@@ -65,7 +65,7 @@ export default function EditPost() {
 
     const data = {
       title: post.title,
-      slug: slugify(post.title),
+      slug: slugify(post.title!),
       tags: post.tags,
       content: post.content,
       author: post.author,
@@ -128,7 +128,7 @@ export default function EditPost() {
 
             <div className="form-group">
               <ContentEditor
-                initialValue={post.content}
+                initialValue={post.content!}
                 handleOnChange={onContentChange}
               />
             </div>
@@ -138,7 +138,7 @@ export default function EditPost() {
                 <label key={i}>
                   <input
                     type="checkbox"
-                    checked={post.tags.includes(tag.name)}
+                    checked={post.tags!.includes(tag.name)}
                     onChange={() => handleTagChange(tag.name)}
                   />
                   {tag.name.toUpperCase()}
