@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": "./",
     "target": "ESNext",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": false,
@@ -14,6 +15,12 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "types": ["vite/client", "vite-plugin-svgr/client", "vitest/globals"],
+    "paths": {
+      "components/*": ["src/components/*"],
+      "types/*": ["src/types/*"],
+      "utilities/*": ["src/utilities/*"],
+      "hooks/*": ["src/hooks/*"]
+    },
 
     /* Linting */
     "strict": true,
