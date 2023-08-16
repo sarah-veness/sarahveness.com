@@ -13,6 +13,7 @@ import styles from './dashboard.module.scss';
 export default function Dashboard() {
   const { posts } = useGetPosts();
   const [postId, setPostId] = useState('');
+  const [isModalVisible, setModalVisible] = useState(false);
 
   const onDeleteClick = (id: any) => {
     axios
@@ -27,16 +28,22 @@ export default function Dashboard() {
   };
 
   const toggleModal = () => {
-    const modal = document.querySelector(`.${styles.DeleteModal}`);
-    modal?.classList.toggle(`${styles.active}`);
-    modal?.classList.toggle(`${styles.hidden}`);
+    setModalVisible(!isModalVisible);
   };
 
   const DeleteModal = () => {
     return (
-      <div className={`${styles.DeleteModal} ${styles.hidden}`}>
-        This is a modal
+      <div
+        className={`${styles.DeleteModal} ${
+          isModalVisible ? styles.active : styles.hidden
+        }`}
+      >
+        <p>Are you sure you want to delete this post?</p>
+        <p>
+          This <b>cannot</b> be undone
+        </p>
         <button onClick={() => onDeleteClick(postId)}>Delete</button>
+        <span onClick={toggleModal}>X</span>
       </div>
     );
   };
@@ -79,10 +86,14 @@ export default function Dashboard() {
         });
 
   return (
-    <div className={styles.Dashboard}>
-      <h1>Manage Posts</h1>
-      <ul>{postList}</ul>
+    <>
+      <div
+        className={`${styles.Dashboard} ${isModalVisible ? styles.blur : ''}`}
+      >
+        <h1>Manage Posts</h1>
+        <ul>{postList}</ul>
+      </div>
       <DeleteModal />
-    </div>
+    </>
   );
 }
