@@ -3,7 +3,7 @@ import AuthButtons from './AuthButtons/AuthButtons';
 
 import Home from './Home/Home';
 import Writing from './Writing/Writing';
-import Reading from './Reading/Reading';
+import Command from './Command/Command';
 import Contact from './Contact/Contact';
 
 import Dashboard from './Dashboard/Dashboard';
@@ -25,7 +25,7 @@ export {
   EditPost,
   ShowPost,
   ShowPostsByTag,
-  Reading,
+  Command,
   Home,
   ContentEditor,
   PostForm,

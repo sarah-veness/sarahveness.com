@@ -6,7 +6,7 @@ import {
   EditPost,
   Home,
   NewPost,
-  Reading,
+  Command,
   ShowPost,
   ShowPostsByTag,
   Writing,
@@ -24,7 +24,7 @@ export default function App() {
           <Route path="/writing" element={<Writing />} />
           <Route path="/writing/tags/:tag" element={<ShowPostsByTag />} />
 
-          <Route path="/reading" element={<Reading />} />
+          <Route path="/command" element={<Command />} />
           <Route path="/contact" element={<Contact />} />
 
           <Route path="/writing/:id" element={<ShowPost />} />
