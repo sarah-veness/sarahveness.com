@@ -14,7 +14,7 @@ export default function Nav() {
         </div>
         <div className={styles.mainLinks}>
           <Link to="/writing">WRITING</Link>
-          <Link to="/reading">READING</Link>
+          <Link to="/command ">COMMAND</Link>
           <Link to="/contact">CONTACT</Link>
         </div>
         {isAuthenticated ? <AdminNav /> : <div></div>}
