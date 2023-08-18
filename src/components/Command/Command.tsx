@@ -8,7 +8,19 @@ export default function Command() {
           <div className={styles.terminalHeaderButton}></div>
           <div className={styles.terminalHeaderButton}></div>
         </div>
-        <pre></pre>
+        <div className={styles.terminalStartMessage}></div>
+        <div className={styles.terminalInputContainer}>
+          <label htmlFor="terminalInput" className={styles.inputLabel}>
+            [sv:]
+          </label>
+          <input
+            autoFocus
+            name="terminalInput"
+            type="text"
+            className={styles.terminalInput}
+          />
+        </div>
+        <div className={styles.terminalOutputContainer}></div>
       </div>
     </div>
   );

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
 .terminalContainer {
   height: 100%;
   display: flex;
@@ -33,6 +35,26 @@
       &:nth-of-type(3) {
         background-color: green;
       }
+    }
+  }
+
+  .terminalInputContainer {
+    margin: 5px;
+    .inputLabel {
+      padding-right: 5px;
+      font-family: 'VT323', monospace;
+      font-size: 1.25em;
+      color: white;
+      display: inline-block;
+    }
+    .terminalInput {
+      background-color: black;
+      color: white;
+      font-family: 'VT323', monospace;
+      font-size: 1.25em;
+      border: none;
+      outline: none;
+      width: 90%;
     }
   }
 }
