@@ -7,54 +7,69 @@
   align-items: center;
 
   .terminal {
-    height: 50%;
+    height: 70%; /* Adjust as needed */
     width: 60%;
     background-color: black;
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
-  }
 
-  .terminalHeader {
-    background: #e8e6e8;
-    height: 28px;
-    display: flex;
-    align-items: center;
+    .terminalHeader {
+      position: sticky;
+      top: 0;
+      background: #e8e6e8;
+      height: 28px;
+      display: flex;
+      align-items: center;
 
-    .terminalHeaderButton {
-      height: 15px;
-      width: 15px;
-      border-radius: 50%;
-      margin: 0 5px;
+      .terminalHeaderButton {
+        height: 15px;
+        width: 15px;
+        border-radius: 50%;
+        margin: 0 5px;
 
-      &:nth-of-type(1) {
-        background-color: red;
-      }
-      &:nth-of-type(2) {
-        background-color: yellow;
-      }
-      &:nth-of-type(3) {
-        background-color: green;
+        &:nth-of-type(1) {
+          background-color: red;
+        }
+        &:nth-of-type(2) {
+          background-color: yellow;
+        }
+        &:nth-of-type(3) {
+          background-color: green;
+        }
       }
     }
-  }
 
-  .terminalInputContainer {
-    margin: 5px;
-    .inputLabel {
-      padding-right: 5px;
-      font-family: 'VT323', monospace;
-      font-size: 1.25em;
-      color: white;
-      display: inline-block;
-    }
-    .terminalInput {
-      background-color: black;
-      color: white;
-      font-family: 'VT323', monospace;
-      font-size: 1.25em;
-      border: none;
-      outline: none;
-      width: 90%;
+    .terminalBody {
+      height: 95%;
+      overflow: auto;
+
+      pre {
+        color: white;
+        font-family: monospace;
+        font-size: 1.25em;
+        text-align: center;
+      }
+
+      .terminalInputContainer {
+        padding: 0 0 1em 0.5em;
+        margin: 5px;
+        .inputLabel {
+          padding-right: 5px;
+          font-family: 'VT323', monospace;
+          font-size: 1.25em;
+          color: white;
+          display: inline-block;
+        }
+        .terminalInput {
+          background-color: black;
+          color: white;
+          font-family: 'VT323', monospace;
+          font-size: 1.25em;
+          border: none;
+          outline: none;
+          width: 90%;
+        }
+      }
     }
   }
 }
