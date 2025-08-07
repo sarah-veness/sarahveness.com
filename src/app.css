@@ -1,1 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Space+Grotesk:wght@400;700;800&display=swap');
+
 @import 'tailwindcss';
+
+:root {
+	--neo-black: #000000;
+	--neo-white: #ffffff;
+	--neo-pink: #ff006e;
+	--neo-cyan: #00f5ff;
+	--neo-yellow: #ffbe0b;
+	--neo-green: #8ac926;
+	--neo-orange: #fb8500;
+	--neo-purple: #8b5cf6;
+	--neo-red: #ef4444;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Space Grotesk', sans-serif;
+	background: var(--neo-white);
+	color: var(--neo-black);
+	overflow-x: hidden;
+	scroll-behavior: smooth;
+	scroll-snap-type: y mandatory;
+	cursor: default;
+}
+
+@utility neo-shadow {
+	box-shadow: 8px 8px 0px var(--neo-black);
+}
+
+@utility neo-shadow-lg {
+	box-shadow: 12px 12px 0px var(--neo-black);
+}
+
+@utility neo-shadow-xl {
+	box-shadow: 16px 16px 0px var(--neo-black);
+}
+
+@utility neo-border {
+	border: 4px solid var(--neo-black);
+}
+
+@utility neo-border-thick {
+	border: 6px solid var(--neo-black);
+}
+
+@utility neo-btn {
+	@apply cursor-pointer px-6 py-3 text-lg font-bold tracking-wide uppercase neo-shadow transition-all duration-200 ease-out neo-border;
+}
+
+.neo-btn:hover {
+	transform: translate(4px, 4px);
+	box-shadow: 4px 4px 0px var(--neo-black);
+}
+
+.neo-btn:active {
+	transform: translate(8px, 8px);
+	box-shadow: 0px 0px 0px var(--neo-black);
+}
+
+/* Clean navigation button style */
+.nav-btn {
+	cursor: pointer;
+	border: none;
+	outline: none;
+}
+
+.nav-btn:hover {
+	transform: translate(1px, 1px);
+}
+
+/* Ensure hover states work for navigation buttons */
+.nav-btn:hover:not(.bg-yellow-400):not(.bg-pink-400):not(.bg-cyan-400):not(.bg-green-400) {
+	background-color: rgb(229 231 235) !important; /* bg-gray-200 */
+}
+
+.nav-btn:active {
+	transform: translate(2px, 2px);
+}
+
+@utility neo-card {
+	@apply bg-white p-6 neo-shadow-lg neo-border;
+}
+
+@utility neo-input {
+	@apply bg-white p-4 text-lg font-bold neo-border focus:outline-none;
+}
+
+.neo-input:focus {
+	box-shadow: 0 0 0 4px var(--neo-cyan);
+}
+
+/* Typography */
+@utility neo-title {
+	font-family: 'JetBrains Mono', monospace;
+	font-weight: 800;
+	text-transform: uppercase;
+	letter-spacing: -0.02em;
+}
+
+@utility neo-mono {
+	font-family: 'JetBrains Mono', monospace;
+}
+
+/* Animations */
+@keyframes glitch {
+	0% {
+		transform: translate(0);
+	}
+	20% {
+		transform: translate(-2px, 2px);
+	}
+	40% {
+		transform: translate(-2px, -2px);
+	}
+	60% {
+		transform: translate(2px, 2px);
+	}
+	80% {
+		transform: translate(2px, -2px);
+	}
+	100% {
+		transform: translate(0);
+	}
+}
+
+.glitch:hover {
+	animation: glitch 0.3s ease-in-out;
+}
+
+/* Neobrutalist scrollbar */
+::-webkit-scrollbar {
+	width: 20px;
+}
+
+::-webkit-scrollbar-track {
+	background: var(--neo-white);
+	border: 4px solid var(--neo-black);
+	border-radius: 0;
+	box-shadow: inset 4px 4px 0px var(--neo-yellow);
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--neo-pink);
+	border: 4px solid var(--neo-black);
+	border-radius: 0;
+	box-shadow: 2px 2px 0px var(--neo-black);
+	min-height: 40px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: var(--neo-cyan);
+	box-shadow: 4px 4px 0px var(--neo-black);
+	transform: scale(0.95);
+}
+
+::-webkit-scrollbar-thumb:active {
+	background: var(--neo-green);
+	box-shadow: 1px 1px 0px var(--neo-black);
+}
+
+::-webkit-scrollbar-corner {
+	background: var(--neo-white);
+	border: 4px solid var(--neo-black);
+}
+
+/* Firefox scrollbar (limited styling options) */
+* {
+	scrollbar-width: thick;
+	scrollbar-color: var(--neo-pink) var(--neo-black);
+}
+
+/* Firefox scrollbar with better contrast */
+html {
+	scrollbar-width: thick;
+	scrollbar-color: var(--neo-pink) var(--neo-yellow);
+}
+
+/* Try to make Firefox scrollbar more visible with different track color */
+body {
+	scrollbar-width: thick;
+	scrollbar-color: var(--neo-cyan) var(--neo-black);
+}
