@@ -73,10 +73,7 @@ body {
 	transform: translate(1px, 1px);
 }
 
-/* Ensure hover states work for navigation buttons */
-.nav-btn:hover:not(.bg-yellow-400):not(.bg-pink-400):not(.bg-cyan-400):not(.bg-green-400) {
-	background-color: rgb(229 231 235) !important; /* bg-gray-200 */
-}
+/* Hover states are now handled by Tailwind classes in Nav.svelte */
 
 .nav-btn:active {
 	transform: translate(2px, 2px);
