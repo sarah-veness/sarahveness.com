@@ -26,6 +26,13 @@ body {
 	scroll-behavior: smooth;
 	scroll-snap-type: y mandatory;
 	cursor: default;
+	width: 100%;
+	max-width: 100vw;
+}
+
+/* Ensure all elements respect viewport width */
+* {
+	max-width: 100%;
 }
 
 @utility neo-shadow {
@@ -49,7 +56,7 @@ body {
 }
 
 @utility neo-btn {
-	@apply cursor-pointer px-6 py-3 text-lg font-bold tracking-wide uppercase neo-shadow transition-all duration-200 ease-out neo-border;
+	@apply min-h-[44px] cursor-pointer px-4 py-3 text-base font-bold tracking-wide uppercase neo-shadow transition-all duration-200 ease-out neo-border sm:px-6 sm:text-lg;
 }
 
 .neo-btn:hover {
@@ -80,11 +87,11 @@ body {
 }
 
 @utility neo-card {
-	@apply bg-white p-6 neo-shadow-lg neo-border;
+	@apply bg-white p-4 neo-shadow-lg neo-border sm:p-6;
 }
 
 @utility neo-input {
-	@apply bg-white p-4 text-lg font-bold neo-border focus:outline-none;
+	@apply min-h-[44px] bg-white p-3 text-base font-bold neo-border focus:outline-none sm:p-4 sm:text-lg;
 }
 
 .neo-input:focus {

@@ -24,12 +24,14 @@
 	};
 </script>
 
-<nav class="fixed top-4 left-1/2 z-50 -translate-x-1/2 transform px-4">
-	<div class="flex max-w-screen gap-1 overflow-x-auto neo-card bg-white p-1">
+<nav
+	class="fixed top-4 left-1/2 z-50 w-[calc(100vw-2rem)] -translate-x-1/2 transform px-4 sm:w-fit"
+>
+	<div class="flex w-full gap-1 neo-card bg-white p-1">
 		{#each sections as section}
 			<button
 				onclick={() => scrollToSection(section)}
-				class="nav-btn px-2 py-2 text-xs font-bold tracking-wide whitespace-nowrap uppercase transition-all duration-200 sm:px-4 sm:text-sm {$currentSection ===
+				class="nav-btn flex-1 px-2 py-2 text-xs font-bold tracking-wide whitespace-nowrap uppercase transition-all duration-200 sm:flex-initial sm:px-4 sm:text-sm {$currentSection ===
 				section
 					? sectionColors[section as keyof typeof sectionColors]
 					: ''} {sectionHoverColors[section as keyof typeof sectionHoverColors]}"
