@@ -1,4 +1,5 @@
 <script lang="ts">
+	import GlitchText from '$lib/components/GlitchText.svelte';
 	let formData = {
 		name: '',
 		email: '',
@@ -14,14 +15,14 @@
 </script>
 
 <section id="contact" class="bg-gradient-to-br from-pink-400 via-purple-400 to-cyan-400 px-4 py-20">
-	<div class="mx-auto max-w-4xl text-center">
-		<h2 class="mb-8 neo-title text-4xl text-black md:text-6xl">
-			LET'S <span class="text-white">WORK</span> TOGETHER
+	<div class="mx-auto flex max-w-4xl flex-col gap-12 text-center">
+		<h2
+			class="flex w-full items-center justify-center gap-6 neo-title text-4xl text-black md:text-6xl"
+		>
+			LET'S <GlitchText /> TOGETHER
 		</h2>
 
-		<div class="mb-8 neo-card bg-white">
-			<p class="mb-6 text-xl font-bold">Ready to create something extraordinary?</p>
-
+		<div class="neo-card bg-white">
 			<form
 				onsubmit={(e) => {
 					e.preventDefault();
@@ -66,13 +67,25 @@
 			>
 				EMAIL
 			</a>
-			<a href="https://github.com/sarah-veness" class="neo-btn bg-white hover:bg-gray-100">
+			<a
+				href="https://github.com/sarah-veness"
+				class="neo-btn bg-white hover:bg-gray-100"
+				target="_blank"
+			>
 				GITHUB
 			</a>
-			<a href="https://linkedin.com/in/sarahveness" class="neo-btn bg-blue-400 hover:bg-blue-300">
+			<a
+				href="https://linkedin.com/in/sarahveness"
+				class="neo-btn bg-blue-400 hover:bg-blue-300"
+				target="_blank"
+			>
 				LINKEDIN
 			</a>
-			<a href="https://twitter.com/sarahveness" class="neo-btn bg-cyan-400 hover:bg-cyan-300">
+			<a
+				href="https://twitter.com/sarahveness"
+				class="neo-btn bg-cyan-400 hover:bg-cyan-300"
+				target="_blank"
+			>
 				TWITTER
 			</a>
 		</div>
