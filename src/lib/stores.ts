@@ -1,3 +1,3 @@
 import { writable } from 'svelte/store';
 
-export const currentSection = writable('hero');
+export const currentSection = writable('home');

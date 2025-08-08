@@ -1,24 +1,20 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
-	import { Nav, Contact } from '$lib/components';
+	import { Nav, Contact, Footer } from '$lib/components';
 	import { currentSection } from '$lib/stores';
 
-	let mounted = false;
-
 	onMount(() => {
-		mounted = true;
-
 		const sections = document.querySelectorAll('section');
 		const observer = new IntersectionObserver(
 			(entries) => {
 				let maxRatio = 0;
-				let mostVisibleSection = 'hero';
+				let mostVisibleSection = 'home';
 
 				entries.forEach((entry) => {
 					if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {
 						maxRatio = entry.intersectionRatio;
-						mostVisibleSection = entry.target.id || 'hero';
+						mostVisibleSection = entry.target.id || 'home';
 					}
 				});
 
@@ -54,7 +50,7 @@
 	<Nav />
 
 	<section
-		id="hero"
+		id="home"
 		class="relative flex min-h-screen items-center justify-center overflow-hidden p-4 sm:p-8"
 	>
 		<div class="absolute inset-0 -z-10">
@@ -88,12 +84,6 @@
 
 			<div class="flex flex-col flex-wrap justify-center gap-3 px-4 sm:flex-row sm:gap-4">
 				<button
-					onclick={() => scrollToSection('projects')}
-					class="w-full neo-btn bg-pink-400 hover:bg-pink-300 sm:w-auto"
-				>
-					VIEW WORK
-				</button>
-				<button
 					onclick={() => scrollToSection('contact')}
 					class="w-full neo-btn bg-cyan-400 hover:bg-cyan-300 sm:w-auto"
 				>
@@ -104,12 +94,5 @@
 	</section>
 
 	<Contact />
-
-	<!-- Footer -->
-	<footer class="bg-black px-4 py-8 text-white">
-		<div class="mx-auto max-w-6xl text-center">
-			<p class="neo-mono text-sm">© 2025 SARAH VENESS. BUILT WITH SVELTE & LOVE.</p>
-			<p class="mt-2 neo-mono text-xs text-gray-400">NEOBRUTALISM NEVER GOES OUT OF STYLE.</p>
-		</div>
-	</footer>
+	<Footer />
 </main>

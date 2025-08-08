@@ -8,16 +8,16 @@
 		}
 	}
 
-	const sections = ['hero', 'contact'];
+	const sections = ['home', 'contact'];
 	const sectionColors = {
-		hero: 'bg-pink-400',
+		home: 'bg-pink-400',
 		about: 'bg-cyan-400',
 		projects: 'bg-yellow-400',
 		contact: 'bg-green-400'
 	};
 
 	const sectionHoverColors = {
-		hero: 'hover:bg-pink-400/50',
+		home: 'hover:bg-pink-400/50',
 		about: 'hover:bg-cyan-400/50',
 		projects: 'hover:bg-yellow-400/50',
 		contact: 'hover:bg-green-400/50'
