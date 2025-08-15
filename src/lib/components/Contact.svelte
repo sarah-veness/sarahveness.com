@@ -1,11 +1,37 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import { dev } from '$app/environment';
+	import { fade } from 'svelte/transition';
 	import GlitchText from '$lib/components/GlitchText.svelte';
 
 	let error = $state('');
 	let formSent = $state(false);
 	let isSubmitting = $state(false);
+	let successTimer: NodeJS.Timeout | null = null;
+	let errorTimer: NodeJS.Timeout | null = null;
+
+	function setSuccessMessage() {
+		if (successTimer) clearTimeout(successTimer);
+		formSent = true;
+
+		successTimer = setTimeout(() => {
+			formSent = false;
+			successTimer = null;
+		}, 5000);
+	}
+
+	function setErrorMessage(message: string) {
+		// Clear any existing timer
+		if (errorTimer) clearTimeout(errorTimer);
+
+		error = message;
+
+		// Set timer to auto-dismiss after 5 seconds
+		errorTimer = setTimeout(() => {
+			error = '';
+			errorTimer = null;
+		}, 5000);
+	}
 
 	async function handleNetlifySubmission(form: HTMLFormElement, formData: FormData) {
 		// In development, we can't submit to Netlify, so just simulate success
@@ -49,16 +75,19 @@
 				data-netlify-honeypot="company"
 				use:enhance={() => {
 					isSubmitting = true;
+					// Clear any existing messages and timers
+					if (successTimer) clearTimeout(successTimer);
+					if (errorTimer) clearTimeout(errorTimer);
 					error = '';
 					formSent = false;
 					return async ({ formElement, formData }) => {
 						const result = await handleNetlifySubmission(formElement, formData);
 
 						if (result.success) {
-							formSent = true;
+							setSuccessMessage();
 							formElement.reset();
 						} else {
-							error = 'Sorry, there was an error sending your message. Please try again.';
+							setErrorMessage('Sorry, there was an error sending your message. Please try again.');
 						}
 
 						isSubmitting = false;
@@ -91,14 +120,14 @@
 				</div>
 
 				{#if formSent}
-					<div class="mt-6 neo-card bg-pink-400 text-center">
+					<div class="mt-6 neo-card bg-pink-400 text-center" transition:fade>
 						<p class="text-lg font-bold text-black">✨ MESSAGE SENT! ✨</p>
 						<p class="mt-2 text-base font-medium text-black">I'll get back to you soon!</p>
 					</div>
 				{/if}
 
 				{#if error}
-					<div class="mt-6 neo-card bg-red-400 text-center">
+					<div class="mt-6 neo-card bg-red-400 text-center" transition:fade>
 						<p class="text-lg font-bold text-black">⚠️ OOPS! ⚠️</p>
 						<p class="mt-2 text-base font-medium text-black">
 							{error}
