@@ -150,7 +150,7 @@
 		</div>
 
 		<div class="mx-auto w-full max-w-4xl px-4 text-center">
-			<h1 class="glitch mb-6 neo-title text-4xl sm:text-6xl md:text-8xl lg:text-9xl">
+			<h1 class="glitch mb-6 neo-title text-6xl md:text-8xl lg:text-9xl">
 				<span class="block text-black">SARAH</span>
 				<span class="-mt-1 block text-pink-500 sm:-mt-2 md:-mt-4">VENESS</span>
 			</h1>
