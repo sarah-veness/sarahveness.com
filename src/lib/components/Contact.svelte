@@ -1,16 +1,30 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
+	import { dev } from '$app/environment';
 	import GlitchText from '$lib/components/GlitchText.svelte';
-	let formData = {
-		name: '',
-		email: '',
-		message: ''
-	};
 
-	function handleSubmit() {
-		console.log('Form submitted:', formData);
-		alert("Thanks for your message! I'll get back to you soon.");
+	let error = $state('');
+	let formSent = $state(false);
+	let isSubmitting = $state(false);
 
-		formData = { name: '', email: '', message: '' };
+	async function handleNetlifySubmission(form: HTMLFormElement, formData: FormData) {
+		// In development, we can't submit to Netlify, so just simulate success
+		if (dev) {
+			await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate network delay
+			return { success: true };
+		}
+
+		// In production, submit to Netlify
+		try {
+			const response = await fetch('/', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+				body: new URLSearchParams(formData as any).toString()
+			});
+			return { success: response.ok };
+		} catch (err) {
+			return { success: false };
+		}
 	}
 </script>
 
@@ -19,51 +33,78 @@
 	class="bg-gradient-to-br from-pink-400 via-purple-400 to-cyan-400 px-4 py-20 sm:px-8"
 >
 	<div
-		class="mx-auto flex w-full max-w-4xl flex-col items-center justify-center gap-8 text-center sm:gap-12"
+		class="mx-auto flex w-full max-w-screen-xl flex-col items-center justify-center gap-8 text-center sm:gap-12"
 	>
 		<h2
-			class="flex w-full items-center justify-center gap-3 neo-title text-2xl text-black sm:gap-6 sm:text-4xl md:text-6xl"
+			class="flex w-full items-center justify-center gap-3 neo-title text-3xl text-black sm:gap-6 md:text-6xl"
 		>
 			LET'S <GlitchText /> TOGETHER
 		</h2>
 
-		<div class="w-full neo-card bg-white sm:w-fit sm:min-w-96">
+		<div class="w-full neo-card bg-white md:w-4xl">
 			<form
-				onsubmit={(e) => {
-					e.preventDefault();
-					handleSubmit();
+				name="contact"
+				method="POST"
+				data-netlify="true"
+				data-netlify-honeypot="company"
+				use:enhance={() => {
+					isSubmitting = true;
+					error = '';
+					formSent = false;
+					return async ({ formElement, formData }) => {
+						const result = await handleNetlifySubmission(formElement, formData);
+
+						if (result.success) {
+							formSent = true;
+							formElement.reset();
+						} else {
+							error = 'Sorry, there was an error sending your message. Please try again.';
+						}
+
+						isSubmitting = false;
+					};
 				}}
 			>
+				<input type="hidden" name="form-name" value="contact" />
+
 				<div class="grid gap-4 sm:grid-cols-2">
-					<input
-						type="text"
-						placeholder="YOUR NAME"
-						class="neo-input"
-						bind:value={formData.name}
-						required
-					/>
-					<input
-						type="email"
-						placeholder="YOUR EMAIL"
-						class="neo-input"
-						bind:value={formData.email}
-						required
-					/>
+					<input type="text" placeholder="YOUR NAME" class="neo-input" required name="name" />
+					<input type="email" placeholder="YOUR EMAIL" class="neo-input" required name="email" />
 				</div>
 
 				<textarea
 					placeholder="TELL ME ABOUT YOUR PROJECT"
 					rows="4"
 					class="mt-4 neo-input w-full resize-none"
-					bind:value={formData.message}
 					required
+					name="message"
 				></textarea>
 
 				<div class="mt-6 flex justify-center">
-					<button type="submit" class="neo-btn w-full bg-green-400 hover:bg-green-300 sm:w-fit">
-						SEND MESSAGE
+					<button
+						type="submit"
+						class="neo-btn w-full bg-green-400 hover:bg-green-300 disabled:cursor-not-allowed disabled:opacity-50 sm:w-fit"
+						disabled={isSubmitting}
+					>
+						{isSubmitting ? 'SENDING...' : 'SEND MESSAGE'}
 					</button>
 				</div>
+
+				{#if formSent}
+					<div class="mt-6 neo-card bg-pink-400 text-center">
+						<p class="text-lg font-bold text-black">✨ MESSAGE SENT! ✨</p>
+						<p class="mt-2 text-base font-medium text-black">I'll get back to you soon!</p>
+					</div>
+				{/if}
+
+				{#if error}
+					<div class="mt-6 neo-card bg-red-400 text-center">
+						<p class="text-lg font-bold text-black">⚠️ OOPS! ⚠️</p>
+						<p class="mt-2 text-base font-medium text-black">
+							{error}
+						</p>
+					</div>
+				{/if}
 			</form>
 		</div>
 
