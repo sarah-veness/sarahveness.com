@@ -56,13 +56,13 @@
 
 <section
 	id="contact"
-	class="bg-gradient-to-br from-pink-400 via-purple-400 to-cyan-400 px-4 py-20 sm:px-8"
+	class="bg-gradient-to-br from-pink-400 via-purple-400 to-cyan-400 px-4 py-10 sm:px-8"
 >
 	<div
 		class="mx-auto flex w-full max-w-screen-xl flex-col items-center justify-center gap-8 text-center sm:gap-12"
 	>
 		<h2
-			class="flex w-full items-center justify-center gap-3 neo-title text-3xl text-black sm:gap-6 md:text-6xl"
+			class="flex w-full items-center justify-center gap-3 neo-title text-2xl text-black sm:gap-6 md:text-6xl"
 		>
 			LET'S <GlitchText /> TOGETHER
 		</h2>

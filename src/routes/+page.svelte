@@ -51,7 +51,7 @@
 
 	<section
 		id="home"
-		class="relative flex min-h-screen items-center justify-center overflow-hidden px-4 py-20 sm:px-8 sm:py-8"
+		class="relative flex min-h-screen items-center justify-center overflow-hidden px-4 pt-16 md:px-8"
 	>
 		<div class="absolute inset-0 -z-10">
 			<!-- Mobile optimized background shapes -->
