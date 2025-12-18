@@ -3,11 +3,11 @@
 	publish = "build"
 
 [build.environment]
-	NETLIFY_USE_BUN = "true"
+	NETLIFY_USE_BUN = "1"
 	NODE_VERSION = "22"
 
 [functions]
 	directory = "netlify/functions"
 
 [context.production]
-	environment = { NODE_VERSION = "22", NETLIFY_USE_BUN = "true" }
+	environment = { NODE_VERSION = "22", NETLIFY_USE_BUN = "1" }
