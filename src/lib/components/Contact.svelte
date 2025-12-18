@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
 	import { dev } from '$app/environment';
 	import { fade } from 'svelte/transition';
 	import GlitchText from '$lib/components/GlitchText.svelte';
@@ -7,8 +6,8 @@
 	let error = $state('');
 	let formSent = $state(false);
 	let isSubmitting = $state(false);
-	let successTimer: NodeJS.Timeout | null = null;
-	let errorTimer: NodeJS.Timeout | null = null;
+	let successTimer: any = null;
+	let errorTimer: any = null;
 
 	function setSuccessMessage() {
 		if (successTimer) clearTimeout(successTimer);
@@ -52,6 +51,31 @@
 			return { success: false };
 		}
 	}
+
+	async function handleSubmit(event: SubmitEvent) {
+		event.preventDefault();
+		const form = event.currentTarget as HTMLFormElement;
+		const formData = new FormData(form);
+
+		isSubmitting = true;
+		error = '';
+		formSent = false;
+
+		// Clear any existing messages and timers
+		if (successTimer) clearTimeout(successTimer);
+		if (errorTimer) clearTimeout(errorTimer);
+
+		const result = await handleNetlifySubmission(form, formData);
+
+		if (result.success) {
+			setSuccessMessage();
+			form.reset();
+		} else {
+			setErrorMessage('Sorry, there was an error sending your message. Please try again.');
+		}
+
+		isSubmitting = false;
+	}
 </script>
 
 <section
@@ -73,26 +97,7 @@
 				method="POST"
 				data-netlify="true"
 				data-netlify-honeypot="company"
-				use:enhance={() => {
-					isSubmitting = true;
-					// Clear any existing messages and timers
-					if (successTimer) clearTimeout(successTimer);
-					if (errorTimer) clearTimeout(errorTimer);
-					error = '';
-					formSent = false;
-					return async ({ formElement, formData }) => {
-						const result = await handleNetlifySubmission(formElement, formData);
-
-						if (result.success) {
-							setSuccessMessage();
-							formElement.reset();
-						} else {
-							setErrorMessage('Sorry, there was an error sending your message. Please try again.');
-						}
-
-						isSubmitting = false;
-					};
-				}}
+				onsubmit={handleSubmit}
 			>
 				<input type="hidden" name="form-name" value="contact" />
 

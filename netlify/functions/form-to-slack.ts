@@ -1,5 +1,7 @@
 import type { Handler } from '@netlify/functions';
 
+const ALLOWED_FIELDS = ['name', 'email', 'message'];
+
 export const handler: Handler = async (event) => {
 	try {
 		if (!event.body) {
@@ -7,13 +9,14 @@ export const handler: Handler = async (event) => {
 		}
 
 		const payload = JSON.parse(event.body);
+		const { data, form_name, created_at } = payload;
 
-		const { data, form_name, created_at, site } = payload;
-
-		const fields = Object.entries(data || {}).map(([key, value]) => ({
-			type: 'mrkdwn',
-			text: `*${key}*\n${value ?? '—'}`
-		}));
+		const fields = Object.entries(data || {})
+			.filter(([key]) => ALLOWED_FIELDS.includes(key))
+			.map(([key, value]) => ({
+				type: 'mrkdwn',
+				text: `*${key}*\n${value ?? '—'}`
+			}));
 
 		const slackMessage = {
 			text: `New ${form_name} submission`,
@@ -22,7 +25,7 @@ export const handler: Handler = async (event) => {
 					type: 'header',
 					text: {
 						type: 'plain_text',
-						text: '📩 New form submission'
+						text: '📩 New contact form submission'
 					}
 				},
 				{
@@ -34,7 +37,7 @@ export const handler: Handler = async (event) => {
 					elements: [
 						{
 							type: 'mrkdwn',
-							text: `*Form:* ${form_name} • *Site:* ${site?.name} • *Time:* ${created_at}`
+							text: `*Form:* ${form_name} • *Time:* ${created_at}`
 						}
 					]
 				}
