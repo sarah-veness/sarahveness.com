@@ -1,9 +1,13 @@
 [build]
-	command = "npm run build"
+	command = "bun run build"
 	publish = "build"
+
+[build.environment]
+	NETLIFY_USE_BUN = "true"
+	NODE_VERSION = "22"
 
 [functions]
 	directory = "netlify/functions"
 
 [context.production]
-	environment = { NODE_VERSION = "22" }
+	environment = { NODE_VERSION = "22", NETLIFY_USE_BUN = "true" }
